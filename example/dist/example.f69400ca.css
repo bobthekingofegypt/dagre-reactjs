@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.closed-node > rect, .n > rect {
+  fill: #f00 !important;
+}
+
+.vee {
+  stroke-width: 2.5px;
+}
+
+h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  margin-top: 0.8em;
+  margin-bottom: 0.2em;
+}
+
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  font-size: 14px;
+}
+
+.node rect {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.node polygon {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.edgePath path.path {
+  stroke: #333;
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+div#top-frame {
+  height: 350px;
+}
+
+div#WBS-frame {
+  float: left;
+  width: 50%;
+}
+
+div#dependencies-frame {
+  float: left;
+  width: 50%;
+}
+
+div#schedule-frame {
+  float: none;
+}
+
+
+/*# sourceMappingURL=/example.f69400ca.css.map */
