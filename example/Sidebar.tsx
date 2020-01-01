@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export const Sidebar: React.FC<{}> = () => {
   return (
-    <div>
+    <div className="Sidebar">
+      <h2>Examples</h2>
       <ul>
         <li><Link to='/basic1'>Basic 1</Link></li>
         <li><Link to='/basic2'>Basic 2</Link></li>
@@ -15,6 +16,7 @@ export const Sidebar: React.FC<{}> = () => {
         <li><Link to='/timeline'>Timeline</Link></li>
         <li><Link to='/mouseEvents'>Mouse Events</Link></li>
         <li><Link to='/customButtonNodes'>Custom button nodes</Link></li>
+        <li><Link to='/panAndZoom'>Pan and zoom</Link></li>
       </ul>
     </div>
   );

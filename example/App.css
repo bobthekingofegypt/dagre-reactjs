@@ -1,78 +1,48 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+body,
+html,
+#root {
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 26.4px;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: hidden;
+  min-height: 100%;
+  height: 100%;
 }
 
-.App-link {
-  color: #09d3ac;
+.Sidebar {
+  flex: 0 0 180px;
+  min-height: 100%;
+  padding: 20px;
+  border-right: 2px solid #d6d6d6;
+}
+.page-content {
+  flex-grow: 1;
+  padding: 20px;
+  height: 100%;
 }
 
-.closed-node > rect, .n > rect {
-  fill: #f00 !important;
+.Sidebar ul {
+  list-style: none;
 }
 
-.vee {
-  stroke-width: 2.5px;
+.Sidebar a {
+  text-decoration: none;
+  color: #868686;
 }
 
-h1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
-  margin-top: 0.8em;
-  margin-bottom: 0.2em;
-}
-
-text {
-  font-weight: 300;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
-  font-size: 14px;
-}
-
-.node rect {
-  stroke: #333;
-  fill: #fff;
-  stroke-width: 1.5px;
-}
-
-.node polygon {
-  stroke: #333;
-  fill: #fff;
-  stroke-width: 1.5px;
-}
-
-.edgePath path.path {
-  stroke: #333;
-  fill: none;
-  stroke-width: 1.5px;
-}
-
-div#top-frame {
-  height: 350px;
-}
-
-div#WBS-frame {
-  float: left;
-  width: 50%;
-}
-
-div#dependencies-frame {
-  float: left;
-  width: 50%;
-}
-
-div#schedule-frame {
-  float: none;
+.Sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #666;
 }

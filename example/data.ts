@@ -1,5 +1,4 @@
-import { NodeOptions, EdgeOptions } from "./config_defaults";
-import { RecursivePartial } from "./types";
+import { RecursivePartial, NodeOptions, EdgeOptions } from "../src/types";
 
 export const basic1: {
   nodes: Array<RecursivePartial<NodeOptions>>;

@@ -33,6 +33,7 @@ export interface DagreReactProps {
   defaultNodeConfig: RecursivePartial<NodeOptions>;
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
+  graphLayoutComplete: (width?: number, height?: number) => void;
   graphOptions: GraphOptions;
   stage: number;
   renderNode?: (node: NodeOptions, reportSize: ReportSize, valueCache: ValueCache) => React.ReactElement<any>;
@@ -81,7 +82,8 @@ export default class DagreReact extends React.Component<
     nodes: [],
     edges: [],
     graphOptions: {},
-    stage: 1
+    graphLayoutComplete: () => {},
+    stage: 1,
   };
 
   constructor(props: DagreReactProps) {
@@ -138,6 +140,9 @@ export default class DagreReact extends React.Component<
   checkRender() {
     if (this.state.graph.layoutIfSized()) {
       // console.log("Forcing an update");
+      this.state.graph.layout();
+      this.adjustIntersections();
+      this.props.graphLayoutComplete(this.state.graph.graph.graph().width, this.state.graph.graph.graph().height);
       this.forceUpdate();
     }
   }
@@ -145,8 +150,6 @@ export default class DagreReact extends React.Component<
   render() {
     console.log("render =====================================================");
     if (this.state.graph.dirty) {
-      this.state.graph.layout();
-      this.adjustIntersections();
     }
 
     const { renderNode, renderEdge, renderEdgeLabel } = this.props;

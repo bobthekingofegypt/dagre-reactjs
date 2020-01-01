@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import { Sidebar } from "./Sidebar";
@@ -12,15 +12,14 @@ import {CustomPathsType} from "./examples/CustomPathType";
 import {Timeline} from "./examples/Timeline";
 import { MouseEvents } from "./examples/MouseEvents";
 import { CustomButtonNodes} from "./examples/CustomButtonNodes";
+import { PanAndZoom } from "./examples/PanAndZoom";
 
 class App extends React.Component<{}, {}> {
   render() {
     return (
-      <div>
-        <div>
-          <Sidebar />
-        </div>
-        <div>
+      <div className="container">
+        <Sidebar />
+        <div className="page-content">
           <Switch>
             <Route exact path="/" component={Basic1} />
             <Route path="/basic1" component={Basic1} />
@@ -33,6 +32,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/timeline" component={Timeline} />
             <Route path="/mouseEvents" component={MouseEvents} />
             <Route path="/customButtonNodes" component={CustomButtonNodes} />
+            <Route path="/panAndZoom" component={PanAndZoom} />
           </Switch>
         </div>
       </div>

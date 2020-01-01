@@ -87,12 +87,14 @@ export class Graph {
   layout() {
     console.log("LAYOUT");
     dagreLayout(this.graph);
+    console.log(this.graph);
     this.dirty = false;
   }
 
   layoutIfSized() {
     if (this.isValuesSized()) {
 
+      console.log("scheduling");
       this.scheduleLayout();
       return true;
     }
