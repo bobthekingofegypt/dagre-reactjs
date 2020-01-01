@@ -6,6 +6,7 @@ node_modules
 .pnp.js
 
 example/.cache
+example/dist
 dist/
 # testing
 /coverage
