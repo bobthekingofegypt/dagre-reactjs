@@ -15,6 +15,7 @@ export const UndirectedMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId }) 
     >
       <path
         d="M 0 5 L 10 5"
+        className={edgeMeta.styles.marker.className}
         style={
           edgeMeta.styles.marker.styles || {
             strokeWidth: 1,

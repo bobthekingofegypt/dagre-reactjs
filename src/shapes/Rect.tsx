@@ -12,10 +12,11 @@ export const Rect: React.FC<ShapeComponentProps> = ({ node, innerSize }) => {
 
   return (
     <rect
-       data-tip="hello world"
+      data-tip="hello world"
+      className={node.styles.shape.className}
       style={node.styles.shape.styles || {}}
-      rx="5"
-      ry="5"
+      rx={node.styles.shape.cornerRadius || 0 }
+      ry={node.styles.shape.cornerRadius || 0 }
       x={-halfWidth}
       y={-halfHeight}
       width={innerSize.width}

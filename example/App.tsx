@@ -2,8 +2,8 @@ import * as React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import { Sidebar } from "./Sidebar";
-import { Basic1 } from "./Basic1";
-import { Basic2 } from "./Basic2";
+import { Basic1 } from "./examples/Basic1";
+import { Basic2 } from "./examples/Basic2";
 import { Shapes } from "./examples/Shapes";
 import { TCPState } from "./examples/TCPState";
 import {CustomShapes} from "./examples/CustomShapes";
@@ -14,6 +14,7 @@ import { MouseEvents } from "./examples/MouseEvents";
 import { CustomButtonNodes} from "./examples/CustomButtonNodes";
 import { PanAndZoom } from "./examples/PanAndZoom";
 import { Tooltips } from "./examples/Tooltips";
+import { CustomStyles } from "./examples/CustomStyles";
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -35,6 +36,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/customButtonNodes" component={CustomButtonNodes} />
             <Route path="/panAndZoom" component={PanAndZoom} />
             <Route path="/tooltips" component={Tooltips} />
+            <Route path="/customStyles" component={CustomStyles} />
           </Switch>
         </div>
       </div>

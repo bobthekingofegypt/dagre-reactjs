@@ -129,7 +129,12 @@ export const basic2: {
     },
     {
       id: "4",
-      label: "This"
+      label: "This",
+      styles: {
+        shape: {
+          className: "basic2end"
+        }
+      }
     },
     {
       id: "5",
@@ -141,7 +146,12 @@ export const basic2: {
     },
     {
       id: "7",
-      label: "is"
+      label: "is",
+      styles: {
+        shape: {
+          className: "basic2end"
+        }
+      }
     },
     {
       id: "8",
@@ -153,7 +163,12 @@ export const basic2: {
     },
     {
       id: "10",
-      label: "an"
+      label: "an",
+      styles: {
+        shape: {
+          className: "basic2end"
+        }
+      }
     },
     {
       id: "11",
@@ -161,7 +176,12 @@ export const basic2: {
     },
     {
       id: "12",
-      label: "example"
+      label: "example",
+      styles: {
+        shape: {
+          className: "basic2end"
+        }
+      }
     },
     {
       id: "13",
@@ -169,21 +189,14 @@ export const basic2: {
     },
     {
       id: "14",
-      label: "sentence"
-    }
-  ].map(node => {
-    return {
-      ...node,
+      label: "sentence",
       styles: {
         shape: {
-          styles: { fill: "#fff", stroke: "#000" }
-        },
-        node: {},
-        label: {}
+          className: "basic2end"
+        }
       }
-    };
-  }),
-
+    }
+  ],
   edges: [
     {
       from: "3",
@@ -914,6 +927,93 @@ export const customButtonNodes: {
     },
     {
       from: "3",
+      to: "4"
+    }
+  ]
+};
+
+export const customStyles: {
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+} = {
+  nodes: [
+    {
+      id: "1",
+      label: "C",
+      styles: {
+        label: {
+          styles: { fontSize: "2em" }
+        }
+      },
+    },
+    {
+      id: "2",
+      label: "B",
+      styles: {
+        label: {
+          styles: { fontWeight: "bold" }
+        }
+      },
+    },
+    {
+      id: "3",
+      label: "A",
+      styles: {
+        shape: {
+          styles: { fill: "#afa" }
+        }
+      }
+    },
+    {
+      id: "4",
+      label: "D",
+    },
+    {
+      id: "5",
+      label: "E",
+    }
+  ],
+  edges: [
+    {
+      from: "1",
+      to: "2",
+      label: "A to C",
+      styles: {
+        label: {
+          styles: { fontStyle: "italic", textDecoration: "underline" }
+        }
+      }
+    },
+    {
+      from: "3",
+      to: "2",
+      styles: {
+        edge: {
+          styles: { stroke: "#f66", strokeWidth: "3px", strokeDasharray: "5, 5" }
+        },
+        marker: {
+          styles: { fill: "#f66" }
+        }
+      }
+    },
+    {
+      from: "3",
+      to: "4",
+      pathType: "d3curve",
+      label: "line interpolation different"
+    },
+    {
+      from: "3",
+      to: "5",
+      label: "Arrowhead class",
+      styles: {
+        marker: {
+          className: "arrowhead"
+        }
+      }
+    },
+    {
+      from: "5",
       to: "4"
     }
   ]

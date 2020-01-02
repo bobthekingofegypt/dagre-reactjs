@@ -1,6 +1,6 @@
-import { NodeOptions } from "../../config_defaults";
-import { Point } from "../../types";
+import { Point, NodeOptions } from "../../types";
 
+// intersections from https://github.com/dagrejs/dagre-d3
 export const intersectEllipse = (node: NodeOptions, point: Point) => {
   // Formulae from: http://mathworld.wolfram.com/Ellipse-LineIntersection.html
   const rx = node.width! / 2;

@@ -31,6 +31,7 @@ export interface DagreReactProps {
   customPathGenerators: PathGeneratorTypes;
   customMarkerComponents: MarkerComponents;
   defaultNodeConfig: RecursivePartial<NodeOptions>;
+  defaultEdgeConfig: RecursivePartial<EdgeOptions>;
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
   graphLayoutComplete: (width?: number, height?: number) => void;
@@ -79,6 +80,7 @@ export default class DagreReact extends React.Component<
     customArrowHeads: {},
     customMarkerComponents: {},
     defaultNodeConfig: {},
+    defaultEdgeConfig: {},
     nodes: [],
     edges: [],
     graphOptions: {},
@@ -90,7 +92,7 @@ export default class DagreReact extends React.Component<
     super(props);
     const graph = new Graph();
     graph.setGraphLabelOptions(props.graphOptions);
-    graph.setGraphData(props.nodes, props.edges, props.defaultNodeConfig);
+    graph.setGraphData(props.nodes, props.edges, props.defaultNodeConfig, props.defaultEdgeConfig);
 
     this.state = {
       pathGenerators: { ...builtInPaths, ...props.customPathGenerators },
@@ -106,14 +108,14 @@ export default class DagreReact extends React.Component<
   }
 
   static getDerivedStateFromProps(nextProps: any, state: any) {
-    // console.log("getderivedstate", nextProps, state);
     if (nextProps.stage !== state.previousStage) {
       const graph = state.graph;
       graph.setGraphLabelOptions(nextProps.graphOptions);
       graph.setGraphData(
         nextProps.nodes,
         nextProps.edges,
-        nextProps.defaultNodeConfig
+        nextProps.defaultNodeConfig,
+        nextProps.defaultEdgeConfig
       );
 
       return {

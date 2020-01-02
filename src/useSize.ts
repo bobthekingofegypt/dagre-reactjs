@@ -21,11 +21,9 @@ function useSize(
   });
 
   useLayoutEffect(() => {
-    // console.log(`${tag} layout effect triggered`)
     if (!ref || !ref.current) {
       return;
     }
-    // console.log(`${tag}- `, monitor);
 
     let width = 0;
     let height = 0;
@@ -38,22 +36,16 @@ function useSize(
       height = ref.current.offsetHeight;
     }
 
-    // console.log(`${tag}- width ${width}, height ${height}`);
-    // console.log(`${tag}- padding `, padding);
-
     if (width === 0 || height === 0) {
       return;
     }
 
-    // console.log(monitor);
     if (reportSize && (monitorSize && monitorSize.width && monitorSize.width > 0)) {
       if (!size || (size.width !== width || size.height !== height)) {
-        console.log(`${tag} - reporting size ${width},${height}`);
         reportSize(width, height);
       }
     }
 
-    // console.log(`settings dims on ${tag}`);
     setDim({ width, height });
   }, [ 
     ref,

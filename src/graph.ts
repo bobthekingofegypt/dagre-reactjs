@@ -42,7 +42,8 @@ export class Graph {
   setGraphData(
     nodesIn: Array<RecursivePartial<NodeOptions>>,
     edgesIn: Array<RecursivePartial<EdgeOptions>>,
-    userDefaultNodeConfig: RecursivePartial<NodeOptions>
+    userDefaultNodeConfig: RecursivePartial<NodeOptions>,
+    userDefaultEdgeConfig: RecursivePartial<NodeOptions>
   ) {
     const nodesInCopy: Array<NodeOptions> = JSON.parse(JSON.stringify(nodesIn));
     const edgesInCopy: Array<EdgeOptions> = JSON.parse(JSON.stringify(edgesIn));
@@ -51,9 +52,8 @@ export class Graph {
       defaultsDeep({}, node, userDefaultNodeConfig, defaultNodeConfig)
     );
     const edges = edgesInCopy.map(edge =>
-      defaultsDeep({}, edge, defaultEdgeConfig)
+      defaultsDeep({}, edge, userDefaultEdgeConfig, defaultEdgeConfig)
     );
-    // console.log("set graph data", nodesIn, edgesIn);
 
     this.graph.nodes().forEach(n => this.graph.removeNode(n));
     this.graph.edges().forEach(e => this.graph.removeEdge(e.v, e.w));
@@ -85,16 +85,13 @@ export class Graph {
   }
 
   layout() {
-    console.log("LAYOUT");
+    console.log("running dagre layout");
     dagreLayout(this.graph);
-    console.log(this.graph);
     this.dirty = false;
   }
 
   layoutIfSized() {
     if (this.isValuesSized()) {
-
-      console.log("scheduling");
       this.scheduleLayout();
       return true;
     }

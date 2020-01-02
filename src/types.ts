@@ -82,6 +82,7 @@ export interface NodeOptions {
     shape: {
       className?: string;
       styles?: CSS.Properties;
+      cornerRadius?: number;
     };
     label: {
       className?: string;
@@ -102,6 +103,7 @@ export interface EdgeOptions {
   to: string;
   label?: string;
   labelPos: "l" | "r" | "c";
+  labelOffset: number;
   labelType: string;
   markerType: string;
   pathType: string;

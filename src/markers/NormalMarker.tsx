@@ -15,6 +15,7 @@ export const NormalMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId }) => {
     >
       <path
         d="M 0 0 L 10 5 L 0 10 z"
+        className={edgeMeta.styles.marker.className}
         style={
           edgeMeta.styles.marker.styles || {
             strokeWidth: 1,

@@ -3,6 +3,8 @@ import { Circle } from "./Circle";
 import { intersectRect } from "./intersects/rect";
 import { intersectEllipse } from "./intersects/ellipse";
 import { ShapesDefinition, ShapeDefinition } from "../types";
+import { Diamond } from './Diamond';
+import { intersectDiamond } from './intersects/diamond';
 
 export const builtInShapes: ShapesDefinition = {
   rect: {
@@ -12,6 +14,10 @@ export const builtInShapes: ShapesDefinition = {
   circle: {
     renderer: Circle,
     intersection: intersectEllipse
+  },
+  diamond: {
+    renderer: Diamond,
+    intersection: intersectDiamond
   }
 };
 

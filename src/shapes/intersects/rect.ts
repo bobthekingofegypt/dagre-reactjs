@@ -1,6 +1,6 @@
-import { NodeOptions } from "../../config_defaults";
-import { Point } from "../../types";
+import { Point, NodeOptions } from "../../types";
 
+// intersection code from https://github.com/dagrejs/dagre-d3
 export const intersectRect = (node: NodeOptions, point: Point) => {
   const x = node.x!;
   const y = node.y!;

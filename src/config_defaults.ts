@@ -11,7 +11,8 @@ export const defaultNodeConfig = {
     },
     shape: {
       className: undefined,
-      styles: undefined
+      styles: undefined,
+      cornerRadius: 5,
     },
     label: {
       className: undefined,
@@ -41,6 +42,7 @@ export const  defaultEdgeConfig = {
   },
   labelType: "text",
   labelPos: "r",
+  labelOffset: 10,
   pathType: "normal",
   markerType: "normal",
   meta: {},

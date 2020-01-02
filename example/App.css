@@ -46,3 +46,19 @@ html {
   font-size: 18px;
   color: #666;
 }
+
+.basic2 {
+  fill: #fff;
+}
+
+.basic2end {
+  fill: #0f0;
+}
+
+.basic2label {
+  font-size: 18px;
+}
+
+.arrowhead {
+  fill: #00f;
+}
