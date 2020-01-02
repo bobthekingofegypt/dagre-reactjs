@@ -54,6 +54,10 @@ export class CustomStyles extends React.Component<{}, CustomStylesState> {
 
     return (
       <div>
+        <h1>Custom styles</h1>
+        <p>
+          Example that replicates the dagre-d3 custom styles example
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

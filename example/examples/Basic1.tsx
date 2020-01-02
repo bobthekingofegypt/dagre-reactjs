@@ -23,6 +23,8 @@ export class Basic1 extends React.Component<{}, Basic1State> {
 
     return (
       <div>
+        <h1>Basic 1</h1>
+        <p>Simple demonstration of some nodes connected together with some edges</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

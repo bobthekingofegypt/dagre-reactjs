@@ -48,6 +48,8 @@ export class CustomPathsType extends React.Component<{}, CustomPathsState> {
 
     return (
       <div>
+        <h1>Custom edge paths</h1>
+        <p>Example that shows the use of custom interpolation for paths and custom markers</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

@@ -50,6 +50,8 @@ export class TCPState extends React.Component<{}, TCPStateState> {
 
     return (
       <div>
+        <h1>TCPState</h1>
+        <p>Example that sort of mimics the dagre-d3 example showing tcp state, not supposed to be the exact same</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

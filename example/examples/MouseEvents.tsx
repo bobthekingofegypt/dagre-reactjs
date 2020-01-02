@@ -43,6 +43,10 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
                 ...node.styles.shape.styles,
                 fill: "#00008a"
               };
+              node.styles.label.styles = {
+                ...node.styles.label.styles,
+                fill: "#fff"
+              };
             }
             return (
               <g
@@ -74,6 +78,8 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
 
     return (
       <div>
+        <h1>Timeline</h1>
+        <p>Example that shows updating styles on mouse over, currently unsure of the best way to perform these operations, this is one possible route I was looking at.  Warning changing the raw data without issuing a stage change will not trigger a change in the graph as the dagrereact component has its own copy of the data from the initial props.</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

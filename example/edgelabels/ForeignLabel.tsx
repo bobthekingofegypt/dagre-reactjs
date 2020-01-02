@@ -5,7 +5,8 @@ export const ForeignLabel: React.FC<CustomEdgeLabelProps> = ({ edgeMeta }) => {
   return (
     <div
       style={{
-        color: "#8b0000"
+        color: "#8b0000",
+        minWidth: "200px"
       }}
     >
       <div style={{ fontWeight: "bold" }}>{edgeMeta.label}</div>

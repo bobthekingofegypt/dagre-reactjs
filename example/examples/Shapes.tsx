@@ -38,6 +38,8 @@ export class Shapes extends React.Component<{}, ShapesState> {
 
     return (
       <div>
+        <h1>Shapes</h1>
+        <p>Example showing the use of built in shapes circle, diamond and rectangle</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

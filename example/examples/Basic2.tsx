@@ -44,6 +44,8 @@ export class Basic2 extends React.Component<{}, Basic2State> {
 
     return (
       <div>
+        <h1>Basic 2</h1>
+        <p>Extends basic 1 with some custom class names applied to the end nodes</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

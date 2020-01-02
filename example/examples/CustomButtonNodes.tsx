@@ -61,6 +61,8 @@ export class CustomButtonNodes extends React.Component<
 
     return (
       <div>
+        <h1>Custom button nodes</h1>
+        <p>Example that shows the use of custom foreign objects using the override renderNode method.  This allows the insertion of your own event handling, prop passing or complex flows you may want to perform</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

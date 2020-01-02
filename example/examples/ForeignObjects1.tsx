@@ -54,6 +54,8 @@ export class ForeignObjects1 extends React.Component<{}, ForeignObjectsState> {
 
     return (
       <div>
+        <h1>Foreign objects</h1>
+        <p>Example that shows the use of html components for node and edge that are inserted in as foreign objects, remember to check target browsers support foreignobjects.</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

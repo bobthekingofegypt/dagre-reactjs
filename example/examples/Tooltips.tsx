@@ -55,6 +55,10 @@ export class Tooltips extends React.Component<{}, MouseEventsState> {
 
     return (
       <div>
+        <h1>Tooltips</h1>
+        <p>
+          Example that shows how a third party tooltip library could be integrated for use
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

@@ -63,6 +63,8 @@ export class Timeline extends React.Component<{}, TimelineState> {
 
     return (
       <div>
+        <h1>Timeline</h1>
+        <p>Example that shows updating the graph overtime and forcing relayouts creating a sort of animation effect</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}

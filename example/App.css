@@ -47,6 +47,17 @@ html {
   color: #666;
 }
 
+h1 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+p {
+  color: #666;
+  max-width: 500px;
+}
+
 .basic2 {
   fill: #fff;
 }
