@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ShapeComponentProps, Point, Size } from "../../src/types";
+import { ShapeComponentProps, Point, Size } from "../../.";
 
 export const calculateHousePoints = (size: Size): Array<Point> => {
   const width = size.width;

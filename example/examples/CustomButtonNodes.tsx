@@ -1,7 +1,6 @@
 import * as React from "react";
 import { customButtonNodes } from "../data";
-import { DagreReact, Node, Rect, ValueCache } from "../../src";
-import { RecursivePartial, ReportSize, Size, NodeOptions, EdgeOptions } from "../../src/types";
+import { DagreReact, Node, Rect, ValueCache, RecursivePartial, ReportSize, Size, NodeOptions, EdgeOptions } from "../../.";
 import { CustomButtonLabel } from "../nodelabels/CustomButtonLabel";
 
 export type CustomButtonNodesState = {

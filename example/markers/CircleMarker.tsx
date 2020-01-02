@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MarkerProps} from "../../src/types";
+import {MarkerProps} from "../../.";
 
 export const CircleMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId }) => {
   return ( 

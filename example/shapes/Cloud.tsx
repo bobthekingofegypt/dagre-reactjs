@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ShapeComponentProps, Size } from "../../src/types";
+import { ShapeComponentProps, Size } from "../../.";
 
 export const calculateCloudPath = (size: Size): string => {
   const width = size.width;

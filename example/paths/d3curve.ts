@@ -1,4 +1,4 @@
-import { Point } from "../../src/types";
+import { Point } from "../../.";
 
 import * as d3 from "d3-shape";
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CustomNodeLabelProps } from "../../src/types";
+import { CustomNodeLabelProps } from "../../.";
 
 export const Foreign: React.FC<CustomNodeLabelProps> = ({ node }) => {
   return (

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { basic1 } from "../data";
-import { Node, ValueCache, Rect, NodeTextLabel, DagreReact } from "../../src";
-import { NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../src/types";
+import {} from "../../src";
+import { Node, ValueCache, Rect, NodeTextLabel, DagreReact, NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../.";
 
 type MouseEventsState = {
   nodes: Array<RecursivePartial<NodeOptions>>;

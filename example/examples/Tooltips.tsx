@@ -1,7 +1,6 @@
 import * as React from "react";
 import { basic1 } from "../data";
-import { Node, ValueCache, Rect, NodeTextLabel, DagreReact } from "../../src";
-import { NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../src/types";
+import { Node, ValueCache, Rect, NodeTextLabel, DagreReact, NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../.";
 import ReactTooltip from "react-tooltip";
 
 type MouseEventsState = {

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { customPaths } from "../data";
-import { DagreReact } from "../../src";
-import { NodeOptions, EdgeOptions, RecursivePartial, PathGeneratorTypes, MarkerComponents } from "../../src/types";
+import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, PathGeneratorTypes, MarkerComponents } from "../../.";
 import { generatePathD3Curve } from "../paths/d3curve";
 import { CircleMarker } from "../markers/CircleMarker";
 
