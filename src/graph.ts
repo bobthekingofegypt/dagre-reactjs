@@ -85,7 +85,7 @@ export class Graph {
   }
 
   layout() {
-    console.log("running dagre layout");
+    // console.log("running dagre layout");
     dagreLayout(this.graph);
     this.dirty = false;
   }

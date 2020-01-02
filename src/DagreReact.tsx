@@ -150,7 +150,7 @@ export default class DagreReact extends React.Component<
   }
 
   render() {
-    console.log("render =====================================================");
+    // console.log("render =====================================================");
     if (this.state.graph.dirty) {
     }
 

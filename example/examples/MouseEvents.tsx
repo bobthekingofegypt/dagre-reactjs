@@ -27,7 +27,6 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
     reportSize: ReportSize,
     valueCache: ValueCache
   ) => {
-    console.log("Testing");
     return (
       <Node
         key={node.id}

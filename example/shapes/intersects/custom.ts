@@ -25,7 +25,6 @@ export const intersectPath = (node:NodeOptions, point: Point, pathString: string
 
   console.log(line);
 
-  console.log("path inter2", intersections2);
   if (intersections2.points.length > 0) {
     return {
       x: intersections2.points[0].x + node.x!,
