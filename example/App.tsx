@@ -13,6 +13,7 @@ import {Timeline} from "./examples/Timeline";
 import { MouseEvents } from "./examples/MouseEvents";
 import { CustomButtonNodes} from "./examples/CustomButtonNodes";
 import { PanAndZoom } from "./examples/PanAndZoom";
+import { Tooltips } from "./examples/Tooltips";
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -33,6 +34,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/mouseEvents" component={MouseEvents} />
             <Route path="/customButtonNodes" component={CustomButtonNodes} />
             <Route path="/panAndZoom" component={PanAndZoom} />
+            <Route path="/tooltips" component={Tooltips} />
           </Switch>
         </div>
       </div>

@@ -4,7 +4,6 @@ import DagreReact from '../../src/DagreReact';
 import { RecursivePartial, NodeOptions, EdgeOptions } from '../../src/types';
 import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import {number} from 'prop-types';
 
 type PanAndZoomState = {
   nodes: Array<RecursivePartial<NodeOptions>>;

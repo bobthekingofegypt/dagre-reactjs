@@ -27,6 +27,14 @@ const DEFAULT_NODE_CONFIG: RecursivePartial<NodeOptions> = {
   }
 };
 
+const DEFAULT_EDGE_CONFIG: RecursivePartial<EdgeOptions> = {
+  styles: {
+    label: {
+      styles: { fill: "#868686" }
+    }
+  }
+};
+
 export class TCPState extends React.Component<{}, TCPStateState> {
   constructor(props: {}) {
     super(props);
@@ -47,6 +55,7 @@ export class TCPState extends React.Component<{}, TCPStateState> {
             nodes={nodes}
             edges={edges}
             defaultNodeConfig={DEFAULT_NODE_CONFIG}
+            defaultEdgeConfig={DEFAULT_EDGE_CONFIG}
             graphOptions={{
               marginx: 15,
               marginy: 15,

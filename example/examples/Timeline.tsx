@@ -1,9 +1,7 @@
 import * as React from "react";
-import { DagreReact, ValueCache } from "../../src";
-import { NodeOptions, EdgeOptions, RecursivePartial, Point, ShapesDefinition } from "../../src/types";
+import { DagreReact } from "../../src";
+import { NodeOptions, EdgeOptions, RecursivePartial } from "../../src/types";
 import { animateStory, steps } from "../animatedStory";
-import { Diamond, calculateDiamondPoints } from "../shapes/Diamond";
-import { intersectPolygon2, intersectDiamond } from "../shapes/intersects/diamond";
 
 type TimelineState = {
   data: {
@@ -11,7 +9,6 @@ type TimelineState = {
     edges: Array<RecursivePartial<EdgeOptions>>;
   };
   stage: number;
-  customShapes: ShapesDefinition;
 };
 
 const DEFAULT_NODE_CONFIG: RecursivePartial<NodeOptions> = {
@@ -45,12 +42,6 @@ export class Timeline extends React.Component<{}, TimelineState> {
         edges: [],
       },
       stage: 1,
-      customShapes: {
-        diamond: {
-          renderer: Diamond,
-          intersection: intersectDiamond
-        }
-      }
     };
   }
 
@@ -77,7 +68,6 @@ export class Timeline extends React.Component<{}, TimelineState> {
             nodes={nodes}
             edges={edges}
             defaultNodeConfig={DEFAULT_NODE_CONFIG}
-            customShapes={this.state.customShapes}
             graphOptions={{
               marginx: 15,
               marginy: 15,

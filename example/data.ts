@@ -40,7 +40,9 @@ export const basic1: {
             right: 20
           }
         },
-        label: {}
+        label: {
+          styles: { pointerEvents: "none" }
+        }
       }
     },
     {
@@ -58,7 +60,9 @@ export const basic1: {
             right: 20
           }
         },
-        label: {}
+        label: {
+          styles: { pointerEvents: "none" }
+        }
       }
     },
     {
@@ -76,7 +80,9 @@ export const basic1: {
             right: 20
           }
         },
-        label: {}
+        label: {
+          styles: { pointerEvents: "none" }
+        }
       }
     }
   ],
@@ -912,5 +918,3 @@ export const customButtonNodes: {
     }
   ]
 };
-
-

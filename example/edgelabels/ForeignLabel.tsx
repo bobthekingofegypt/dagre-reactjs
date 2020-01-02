@@ -1,5 +1,5 @@
-import React from "react";
-import { CustomEdgeLabelProps } from "../types";
+import * as React from "react";
+import { CustomEdgeLabelProps } from "../../src/types";
 
 export const ForeignLabel: React.FC<CustomEdgeLabelProps> = ({ edgeMeta }) => {
   return (

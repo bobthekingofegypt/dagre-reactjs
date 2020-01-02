@@ -17,6 +17,7 @@ export const Sidebar: React.FC<{}> = () => {
         <li><Link to='/mouseEvents'>Mouse Events</Link></li>
         <li><Link to='/customButtonNodes'>Custom button nodes</Link></li>
         <li><Link to='/panAndZoom'>Pan and zoom</Link></li>
+        <li><Link to='/tooltips'>Tooltips</Link></li>
       </ul>
     </div>
   );

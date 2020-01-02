@@ -1,14 +1,11 @@
 import * as React from "react";
 import { shapes } from "../data";
-import { DagreReact, ValueCache } from "../../src";
-import { NodeOptions, EdgeOptions, RecursivePartial, Point, ShapesDefinition } from "../../src/types";
-import {Diamond, calculateDiamondPoints} from "../shapes/Diamond";
-import {intersectPolygon2} from "../shapes/intersects/diamond";
+import { DagreReact } from "../../src";
+import { NodeOptions, EdgeOptions, RecursivePartial } from "../../src/types";
 
 type ShapesState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
-  customShapes: ShapesDefinition;
 };
 
 const DEFAULT_NODE_CONFIG = {
@@ -33,16 +30,6 @@ export class Shapes extends React.Component<{}, ShapesState> {
     this.state = {
       nodes: shapes.nodes,
       edges: shapes.edges,
-      customShapes: {
-        diamond: {
-          renderer: Diamond,
-          intersection: (node: NodeOptions, point: Point, valueCache: ValueCache) => {
-            const labelSize = valueCache.value(`${node.id}-label-size`);
-            const points = calculateDiamondPoints(labelSize);
-            return intersectPolygon2(node, point, points);
-          }
-        }
-      }
     };
   }
 
@@ -56,7 +43,6 @@ export class Shapes extends React.Component<{}, ShapesState> {
             nodes={nodes}
             edges={edges}
             defaultNodeConfig={DEFAULT_NODE_CONFIG}
-            customShapes={this.state.customShapes}
             graphOptions={{
               marginx: 15,
               marginy: 15,
