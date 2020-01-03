@@ -30,7 +30,6 @@ export class CustomButtonNodes extends React.Component<
     reportSize: ReportSize,
     valueCache: ValueCache
   ) => {
-    console.log("Testing");
     return (
       <Node
         key={node.id}
