@@ -11,7 +11,7 @@ export const defaultNodeConfig = {
     },
     shape: {
       className: undefined,
-      styles: undefined,
+      styles: { fillOpacity: 0, stroke: "#000" },
       cornerRadius: 5,
     },
     label: {
