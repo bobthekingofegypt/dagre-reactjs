@@ -31,6 +31,16 @@
   "name": "dagre-reactjs",
   "author": "Bob",
   "module": "dist/dagre-reactjs.esm.js",
+  "description": "A pure react renderer for dagre with no dependency on d3",
+  "keywords": [
+    "dagre",
+    "react",
+    "d3"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bobthekingofegypt/dagre-reactjs.git"
+  },
   "devDependencies": {
     "dagre": "^0.8.5",
     "@types/dagre": "^0.7.42",
