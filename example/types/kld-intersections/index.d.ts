@@ -2,7 +2,7 @@ declare module "kld-intersections" {
   interface ShapeInfo {
     polygon(any);
     path(any);
-    line(any);
+    line(arg1: any, arg2: any);
   }
 
   class Shape {}

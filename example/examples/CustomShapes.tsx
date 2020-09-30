@@ -60,7 +60,7 @@ export class CustomShapes extends React.Component<{}, CustomShapesState> {
     return (
       <div>
         <h1>Custom shapes</h1>
-        <p>Example that shows how to declare and use custom shapes well still using the built in node component for sizing.  This example is currently broken as line intersections with the cloud don't work corectly, hopefully a new version of kld-intersection will be released soon that fixes the issue</p>
+        <p>Example that shows how to declare and use custom shapes well still using the built in node component for sizing.</p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
