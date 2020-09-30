@@ -22,7 +22,7 @@ This project has a peer dependency on dagre so your project version can be used,
 
 # Examples
 
-Running version of the examples can be seen here https://infallible-davinci-4bc8e0.netlify.app/customShapes
+Running version of the examples can be seen here https://infallible-davinci-4bc8e0.netlify.app/
 
 # Basic usage
 
