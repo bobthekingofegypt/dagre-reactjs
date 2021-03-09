@@ -19,6 +19,7 @@ export const Sidebar: React.FC<{}> = () => {
         <li><Link to='/panAndZoom'>Pan and zoom</Link></li>
         <li><Link to='/tooltips'>Tooltips</Link></li>
         <li><Link to='/customStyles'>Custom styles</Link></li>
+        <li><Link to='/nodeSize'>Resize</Link></li>
       </ul>
     </div>
   );

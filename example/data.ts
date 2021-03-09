@@ -1018,3 +1018,73 @@ export const customStyles: {
     }
   ]
 };
+
+export const customNodeSize: {
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+} = {
+  nodes: [
+    {
+      id: "1",
+      label: "Phase 1",
+      styles: {
+        shape: {
+          styles: { fillOpacity: 1, fill: "#fff", stroke: "#fff" }
+        }
+      },
+      meta: {
+        description: "Scan watch directory for new files"
+      }
+    },
+    {
+      id: "2",
+      label: "Phase 2",
+      styles: {
+        shape: {
+          styles: { fillOpacity: 1, fill: "#fff", stroke: "#fff" }
+        }
+      },
+      meta: {
+        description: "Create queue jobs for identified files"
+      }
+    },
+    {
+      id: "3",
+      label: "Phase 3",
+      styles: {
+        shape: {
+          styles: { fillOpacity: 1, fill: "#fff", stroke: "#fff" }
+        }
+      },
+      meta: {
+        description: "Execute processing of new jobs"
+      }
+    },
+    {
+      id: "4",
+      label: "Phase 4",
+      styles: {
+        shape: {
+          styles: { fillOpacity: 1, fill: "#fff", stroke: "#fff" }
+        }
+      },
+      meta: {
+        description: "Store results of processing"
+      }
+    }
+  ],
+  edges: [
+    {
+      from: "1",
+      to: "2"
+    },
+    {
+      from: "2",
+      to: "3"
+    },
+    {
+      from: "3",
+      to: "4"
+    }
+  ]
+};
