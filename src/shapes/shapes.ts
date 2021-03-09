@@ -1,27 +1,30 @@
-import { Rect } from "./Rect";
-import { Circle } from "./Circle";
-import { intersectRect } from "./intersects/rect";
-import { intersectEllipse } from "./intersects/ellipse";
-import { ShapesDefinition, ShapeDefinition } from "../types";
+import { Rect } from './Rect';
+import { Circle } from './Circle';
+import { intersectRect } from './intersects/rect';
+import { intersectEllipse } from './intersects/ellipse';
+import { ShapesDefinition, ShapeDefinition } from '../types';
 import { Diamond } from './Diamond';
 import { intersectDiamond } from './intersects/diamond';
 
 export const builtInShapes: ShapesDefinition = {
   rect: {
     renderer: Rect,
-    intersection: intersectRect
+    intersection: intersectRect,
   },
   circle: {
     renderer: Circle,
-    intersection: intersectEllipse
+    intersection: intersectEllipse,
   },
   diamond: {
     renderer: Diamond,
-    intersection: intersectDiamond
-  }
+    intersection: intersectDiamond,
+  },
 };
 
-export const getShapeDefinition = (shape: string, shapes: ShapesDefinition): ShapeDefinition => {
+export const getShapeDefinition = (
+  shape: string,
+  shapes: ShapesDefinition
+): ShapeDefinition => {
   if (shapes[shape]) {
     return shapes[shape];
   }

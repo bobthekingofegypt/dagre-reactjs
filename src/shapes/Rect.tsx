@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { ShapeComponentProps } from "../types";
+import { ShapeComponentProps } from '../types';
 
 export const Rect: React.FC<ShapeComponentProps> = ({ node, innerSize }) => {
   if (!node || !innerSize || !(innerSize.width && innerSize.height)) {
@@ -15,8 +15,8 @@ export const Rect: React.FC<ShapeComponentProps> = ({ node, innerSize }) => {
       data-tip="hello world"
       className={node.styles.shape.className}
       style={node.styles.shape.styles || {}}
-      rx={node.styles.shape.cornerRadius || 0 }
-      ry={node.styles.shape.cornerRadius || 0 }
+      rx={node.styles.shape.cornerRadius || 0}
+      ry={node.styles.shape.cornerRadius || 0}
       x={-halfWidth}
       y={-halfHeight}
       width={innerSize.width}

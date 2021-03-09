@@ -1,16 +1,19 @@
-import { NormalMarker } from "./NormalMarker";
-import { VeeMarker } from "./VeeMarker";
-import { UndirectedMarker } from "./UndirectedMarker";
+import { NormalMarker } from './NormalMarker';
+import { VeeMarker } from './VeeMarker';
+import { UndirectedMarker } from './UndirectedMarker';
 
-import {MarkerComponent, MarkerComponents} from "../types";
+import { MarkerComponent, MarkerComponents } from '../types';
 
 export const builtInMarkers: MarkerComponents = {
   normal: NormalMarker,
   vee: VeeMarker,
-  undirected: UndirectedMarker
+  undirected: UndirectedMarker,
 };
 
-export const getMarkerComponent = (type: string, markerComponents: MarkerComponents): MarkerComponent => {
+export const getMarkerComponent = (
+  type: string,
+  markerComponents: MarkerComponents
+): MarkerComponent => {
   if (markerComponents[type]) {
     return markerComponents[type];
   }

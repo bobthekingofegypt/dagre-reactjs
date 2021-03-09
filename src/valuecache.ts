@@ -13,4 +13,3 @@ export class ValueCache {
     return this.values.get(key);
   }
 }
-

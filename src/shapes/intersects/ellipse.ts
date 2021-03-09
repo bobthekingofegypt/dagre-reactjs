@@ -1,4 +1,4 @@
-import { Point, NodeOptions } from "../../types";
+import { Point, NodeOptions } from '../../types';
 
 // intersections from https://github.com/dagrejs/dagre-d3
 export const intersectEllipse = (node: NodeOptions, point: Point) => {

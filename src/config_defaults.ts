@@ -6,44 +6,43 @@ export const defaultNodeConfig = {
         top: 0,
         bottom: 0,
         left: 0,
-        right: 0
-      }
+        right: 0,
+      },
     },
     shape: {
       className: undefined,
-      styles: { fillOpacity: 0, stroke: "#000" },
+      styles: { fillOpacity: 0, stroke: '#000' },
       cornerRadius: 5,
     },
     label: {
       className: undefined,
-      styles: undefined
-    }
+      styles: undefined,
+    },
   },
-  labelType: "text",
-  shape: "rect",
+  labelType: 'text',
+  shape: 'rect',
   meta: {},
 };
 
-
-export const  defaultEdgeConfig = {
+export const defaultEdgeConfig = {
   styles: {
     label: {
       className: undefined,
-      styles: undefined
+      styles: undefined,
     },
     edge: {
       className: undefined,
-      styles: undefined
+      styles: undefined,
     },
     marker: {
       className: undefined,
-      styles: undefined
+      styles: undefined,
     },
   },
-  labelType: "text",
-  labelPos: "r",
+  labelType: 'text',
+  labelPos: 'r',
   labelOffset: 10,
-  pathType: "normal",
-  markerType: "normal",
+  pathType: 'normal',
+  markerType: 'normal',
   meta: {},
-}
+};
