@@ -13,7 +13,8 @@ function useSize(
   tag: string,
   size?: Size,
   reportSize?: ReportSize,
-  monitorSize?: Size
+  monitorSize?: Size,
+  layoutStage?: number
 ) {
   const [dim, setDim] = useState({
     height: 0,
@@ -60,6 +61,7 @@ function useSize(
     reportSize,
     monitorSize ? monitorSize.height : undefined,
     monitorSize ? monitorSize.width : undefined,
+    layoutStage,
   ]);
 
   return dim;

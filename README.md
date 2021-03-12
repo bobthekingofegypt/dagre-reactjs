@@ -378,7 +378,8 @@ If you need to handle button presses, pass custom data, or do something I can't 
   renderNode = (
     node: NodeOptions,
     reportSize: ReportSize,
-    valueCache: ValueCache
+    valueCache: ValueCache,
+    layoutStage: number
   ) => {
     return (
       <Node
@@ -386,6 +387,7 @@ If you need to handle button presses, pass custom data, or do something I can't 
         node={node}
         reportSize={reportSize}
         valueCache={valueCache}
+        layoutStage={layoutStage}
         html={true}
       >
         {{
@@ -439,3 +441,6 @@ Currently dagre labelpos is not respected, it can be passed but internally the e
 
 Currently you cannot change the original prop data and see a change on the graph without changing the "stage" prop on DagreReact. The graph internally takes a copy of the data props on first render and that is the data that is manipulated and rendered internally.  The data props are then ignored until the stage value changes.  This was a decision made so that the component is not changing your state without telling you. Changing the data without triggering dagre to re-layout is not advised anyway as any style change will change the size of a node and should trigger a full stage layout.  This can make using the default built in labels and shapes difficult if you want to change the background on mouse over for example, a possible work around is provided on MouseEvents example. A better solution would be to create your own shape component that takes in the style props that you can store separately from the node data. Again only do this if you know that the change does not affect the width and height on the node.
 
+## Changing of node size
+
+In the case of triggering of change affecting the width or height of the nodes, the full dagre layout needs to rerender. For this purpose, use layoutStage in the same way you would use the stage prop. You must then pass the layoutStage variable to the Node component in the renderNode method (see [Override render methods example](#override-render-methods))

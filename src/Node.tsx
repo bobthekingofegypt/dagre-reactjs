@@ -15,6 +15,7 @@ type NodeProps = {
   reportSize: ReportSize;
   valueCache: ValueCache;
   html: boolean;
+  layoutStage?: number;
   children: {
     shape: (innerSize: Size) => React.ReactElement<any>;
     label: () => React.ReactElement<any>;
@@ -25,6 +26,7 @@ const Node: React.FC<NodeProps> = ({
   node,
   reportSize,
   valueCache,
+  layoutStage,
   html,
   children,
 }) => {
@@ -32,7 +34,14 @@ const Node: React.FC<NodeProps> = ({
   const labelRef = React.useRef<any>(null);
   const shapeRef = React.useRef<SVGGElement>(null);
 
-  const labelSize = useSize(labelRef, `Node: ${node.id} - labelSize`);
+  const labelSize = useSize(
+    labelRef,
+    `Node: ${node.id} - labelSize`,
+    undefined,
+    undefined,
+    undefined,
+    layoutStage
+  );
 
   const labelWithPaddingSize = {
     width: labelSize.width,
@@ -70,14 +79,16 @@ const Node: React.FC<NodeProps> = ({
     `Node: ${node.id} - shapeSize`,
     undefined,
     undefined,
-    labelSize
+    labelSize,
+    layoutStage
   );
   useSize(
     targetRef,
     `Node: ${node.id} - nodesize`,
     { width: node.width, height: node.height },
     reportSize,
-    shapeSize
+    shapeSize,
+    layoutStage
   );
 
   // TODO probably a better solution for this, maybe just editing node to store the shapesize

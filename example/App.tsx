@@ -15,6 +15,7 @@ import { CustomButtonNodes} from "./examples/CustomButtonNodes";
 import { PanAndZoom } from "./examples/PanAndZoom";
 import { Tooltips } from "./examples/Tooltips";
 import { CustomStyles } from "./examples/CustomStyles";
+import { NodeSize } from "./examples/NodeSize";
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -37,6 +38,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/panAndZoom" component={PanAndZoom} />
             <Route path="/tooltips" component={Tooltips} />
             <Route path="/customStyles" component={CustomStyles} />
+            <Route path="/nodeSize" component={NodeSize} />
           </Switch>
         </div>
       </div>

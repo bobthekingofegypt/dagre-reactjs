@@ -37,10 +37,12 @@ export interface DagreReactProps {
   graphLayoutComplete: (width?: number, height?: number) => void;
   graphOptions: GraphOptions;
   stage: number;
+  layoutStage: number;
   renderNode?: (
     node: NodeOptions,
     reportSize: ReportSize,
-    valueCache: ValueCache
+    valueCache: ValueCache,
+    layoutStage: number
   ) => React.ReactElement<any>;
   renderEdge?: (
     index: number,
@@ -70,6 +72,7 @@ type DagreReactState = {
   shapes: ShapesDefinition;
   graph: Graph;
   previousStage: number;
+  layoutStage: number;
 };
 
 const getShapeDefinitionFunc = (
@@ -97,6 +100,7 @@ export default class DagreReact extends React.Component<
     graphOptions: {},
     graphLayoutComplete: () => {},
     stage: 1,
+    layoutStage: 1,
   };
 
   constructor(props: DagreReactProps) {
@@ -118,6 +122,7 @@ export default class DagreReact extends React.Component<
       shapes: { ...builtInShapes, ...props.customShapes },
       graph: graph,
       previousStage: props.stage,
+      layoutStage: props.layoutStage,
     };
 
     this.valueCache = new ValueCache();
@@ -188,7 +193,8 @@ export default class DagreReact extends React.Component<
           return renderNodeFunc(
             node,
             this.reportNodeSize.bind(this, index),
-            this.valueCache
+            this.valueCache,
+            this.props.layoutStage
           );
         })}
         {edges.map((edgeMeta, index) => {
@@ -222,6 +228,7 @@ export default class DagreReact extends React.Component<
         reportSize={reportSize}
         valueCache={valueCache}
         html={nodeLabel.html}
+        layoutStage={this.props.layoutStage}
       >
         {{
           shape: (innerSize: Size) => (
