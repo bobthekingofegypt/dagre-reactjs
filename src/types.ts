@@ -1,5 +1,5 @@
-import {ValueCache} from "./valuecache";
-import * as CSS from "csstype";
+import { ValueCache } from './valuecache';
+import * as CSS from 'csstype';
 
 export type ReportSize = (width: number, height: number) => void;
 
@@ -11,10 +11,11 @@ export type Size = {
 export type Point = { x: number; y: number };
 
 export type RecursivePartial<T> = {
-  [P in keyof T]?:
-    T[P] extends (infer U)[] ? RecursivePartial<U>[] :
-    T[P] extends object ? RecursivePartial<T[P]> :
-    T[P];
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? RecursivePartial<U>[]
+    : T[P] extends object
+    ? RecursivePartial<T[P]>
+    : T[P];
 };
 
 export type ShapeComponentProps = {
@@ -32,13 +33,13 @@ export type MarkerProps = {
 };
 
 export type ShapesDefinition = {
-  [key: string]: ShapeDefinition; 
+  [key: string]: ShapeDefinition;
 };
 
 export type NodeLabelDefinition = {
   renderer: React.FC<CustomNodeLabelProps>;
   html: boolean;
-}
+};
 
 export type CustomEdgeLabelProps = {
   edgeMeta: EdgeOptions;
@@ -49,19 +50,23 @@ export type NodeLabelsDefinition = { [key: string]: NodeLabelDefinition };
 export type EdgeLabelDefinition = {
   renderer: React.FC<CustomEdgeLabelProps>;
   html: boolean;
-}
+};
 
-export type MarkerComponent = React.FC<MarkerProps>; 
-export type MarkerComponents = { [key: string]: MarkerComponent }; 
+export type MarkerComponent = React.FC<MarkerProps>;
+export type MarkerComponents = { [key: string]: MarkerComponent };
 
-export type PathGenerator = (points: Array<Point>) => string; 
-export type PathGeneratorTypes = { [key: string]: PathGenerator }; 
+export type PathGenerator = (points: Array<Point>) => string;
+export type PathGeneratorTypes = { [key: string]: PathGenerator };
 
 export type EdgeLabelsDefinition = { [key: string]: EdgeLabelDefinition };
 
 export type ShapeDefinition = {
   renderer: React.FC<ShapeComponentProps>;
-  intersection: (node: NodeOptions, point: Point, valueCache: ValueCache) => Point;
+  intersection: (
+    node: NodeOptions,
+    point: Point,
+    valueCache: ValueCache
+  ) => Point;
 };
 
 export interface NodeOptions {
@@ -95,14 +100,14 @@ export interface NodeOptions {
   y?: number;
   meta: {
     [key: string]: any;
-  }
+  };
 }
 
 export interface EdgeOptions {
   from: string;
   to: string;
   label?: string;
-  labelPos: "l" | "r" | "c";
+  labelPos: 'l' | 'r' | 'c';
   labelOffset: number;
   labelType: string;
   markerType: string;
@@ -117,18 +122,17 @@ export interface EdgeOptions {
     label: {
       className: string;
       styles: CSS.Properties;
-    },
+    };
     edge: {
       className: string;
       styles: CSS.Properties;
-    },
+    };
     marker: {
       className: string;
       styles: CSS.Properties;
-    },
-  },
+    };
+  };
   meta: {
     [key: string]: any;
-  }
+  };
 }
-

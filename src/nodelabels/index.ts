@@ -1,14 +1,17 @@
-import { Text } from "./Text";
-import { NodeLabelsDefinition, NodeLabelDefinition } from "../types";
+import { Text } from './Text';
+import { NodeLabelsDefinition, NodeLabelDefinition } from '../types';
 
 export const builtInNodeLabels: NodeLabelsDefinition = {
   text: {
     renderer: Text,
-    html: false
-  }
+    html: false,
+  },
 };
 
-export const getNodeLabel = (type: string, nodeLabels: NodeLabelsDefinition): NodeLabelDefinition => {
+export const getNodeLabel = (
+  type: string,
+  nodeLabels: NodeLabelsDefinition
+): NodeLabelDefinition => {
   if (nodeLabels[type]) {
     return nodeLabels[type];
   }

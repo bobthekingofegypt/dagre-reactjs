@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { ShapeComponentProps } from "../types";
+import { ShapeComponentProps } from '../types';
 
 export const Circle: React.FC<ShapeComponentProps> = ({ node, innerSize }) => {
   if (!node || !innerSize || !(innerSize.width && innerSize.height)) {

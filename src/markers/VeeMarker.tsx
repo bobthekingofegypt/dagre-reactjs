@@ -1,7 +1,7 @@
-import * as React from "react";
-import { MarkerProps } from "../types";
+import * as React from 'react';
+import { MarkerProps } from '../types';
 
-export const VeeMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId}) => {
+export const VeeMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId }) => {
   return (
     <marker
       id={markerId}
@@ -19,7 +19,7 @@ export const VeeMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId}) => {
         style={
           edgeMeta.styles.marker.styles || {
             strokeWidth: 1,
-            strokeDasharray: "1, 0"
+            strokeDasharray: '1, 0',
           }
         }
       ></path>

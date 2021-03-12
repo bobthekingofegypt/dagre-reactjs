@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useLayoutEffect, useState, RefObject } from "react";
+import { useLayoutEffect, useState, RefObject } from 'react';
 
-import { ReportSize } from "./types";
+import { ReportSize } from './types';
 
 type Size = {
   width?: number;
@@ -17,7 +17,7 @@ function useSize(
 ) {
   const [dim, setDim] = useState({
     height: 0,
-    width: 0 
+    width: 0,
   });
 
   useLayoutEffect(() => {
@@ -40,21 +40,26 @@ function useSize(
       return;
     }
 
-    if (reportSize && (monitorSize && monitorSize.width && monitorSize.width > 0)) {
-      if (!size || (size.width !== width || size.height !== height)) {
+    if (
+      reportSize &&
+      monitorSize &&
+      monitorSize.width &&
+      monitorSize.width > 0
+    ) {
+      if (!size || size.width !== width || size.height !== height) {
         reportSize(width, height);
       }
     }
 
     setDim({ width, height });
-  }, [ 
+  }, [
     ref,
     tag,
     size ? size.width : undefined,
     size ? size.height : undefined,
     reportSize,
     monitorSize ? monitorSize.height : undefined,
-    monitorSize ? monitorSize.width : undefined
+    monitorSize ? monitorSize.width : undefined,
   ]);
 
   return dim;

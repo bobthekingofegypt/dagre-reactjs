@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 
-import useSize from "./useSize";
-import { EdgeOptions, ReportSize} from "./types";
+import useSize from './useSize';
+import { EdgeOptions, ReportSize } from './types';
 
-declare module "react" {
+declare module 'react' {
   interface HTMLAttributes<T> {
     xmlns?: string;
   }
@@ -20,7 +20,7 @@ const EdgeLabel: React.FC<EdgeLabelProps> = ({
   html,
   edgeMeta,
   reportSize,
-  children
+  children,
 }) => {
   const targetRef = React.useRef<SVGGElement>(null);
   const labelRef = React.useRef<any>(null);
@@ -55,10 +55,11 @@ const EdgeLabel: React.FC<EdgeLabelProps> = ({
       <g transform={`translate(${offsetX},${offsetY})`} className="label">
         {html ? (
           <foreignObject width={labelSize.width} height={labelSize.height}>
-            <div xmlns="http://www.w3.org/1999/xhtml" style={{"display": "inline-block"}}>
-              <div ref={labelRef}>
-                {children()}
-              </div>
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              style={{ display: 'inline-block' }}
+            >
+              <div ref={labelRef}>{children()}</div>
             </div>
           </foreignObject>
         ) : (

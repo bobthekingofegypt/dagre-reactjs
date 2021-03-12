@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import useSize from "./useSize";
-import { NodeOptions, ReportSize, Size } from "./types";
-import { ValueCache } from "./valuecache";
+import useSize from './useSize';
+import { NodeOptions, ReportSize, Size } from './types';
+import { ValueCache } from './valuecache';
 
-declare module "react" {
+declare module 'react' {
   interface HTMLAttributes<T> {
     xmlns?: string;
   }
@@ -26,7 +26,7 @@ const Node: React.FC<NodeProps> = ({
   reportSize,
   valueCache,
   html,
-  children
+  children,
 }) => {
   const targetRef = React.useRef<SVGGElement>(null);
   const labelRef = React.useRef<any>(null);
@@ -36,18 +36,18 @@ const Node: React.FC<NodeProps> = ({
 
   const labelWithPaddingSize = {
     width: labelSize.width,
-    height: labelSize.height
+    height: labelSize.height,
   };
   const padding = node.styles.node.padding || {
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
   };
   if (
     !node.label ||
     (node.label &&
-      node.label !== "" &&
+      node.label !== '' &&
       labelSize.width > 0 &&
       labelSize.height > 0)
   ) {
@@ -112,7 +112,7 @@ const Node: React.FC<NodeProps> = ({
           <foreignObject width={labelSize.width} height={labelSize.height}>
             <div
               xmlns="http://www.w3.org/1999/xhtml"
-              style={{ display: "inline-block" }}
+              style={{ display: 'inline-block' }}
             >
               <div ref={labelRef}>{children.label()}</div>
             </div>

@@ -3,21 +3,17 @@ import {
   GraphLabel,
   layout as dagreLayout,
   Edge,
-  GraphEdge
-} from "dagre";
-import defaultsDeep from "lodash/defaultsDeep";
-import {
-  defaultNodeConfig,
-  defaultEdgeConfig
-} from "./config_defaults";
-import { NodeOptions, EdgeOptions, RecursivePartial } from "./types";
+  GraphEdge,
+} from 'dagre';
+import defaultsDeep from 'lodash/defaultsDeep';
+import { defaultNodeConfig, defaultEdgeConfig } from './config_defaults';
+import { NodeOptions, EdgeOptions, RecursivePartial } from './types';
 
 export class Graph {
   graph: graphlib.Graph;
   nodes: Array<NodeOptions>;
   edges: Array<EdgeOptions>;
   dirty: boolean;
-
 
   constructor() {
     this.graph = new graphlib.Graph();
