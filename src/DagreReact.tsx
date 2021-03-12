@@ -162,6 +162,12 @@ export default class DagreReact extends React.Component<
 
   checkRender() {
     if (this.state.graph.layoutIfSized()) {
+      this.forceUpdate();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.graph.dirty) {
       // console.log("Forcing an update");
       this.state.graph.layout();
       this.adjustIntersections();
