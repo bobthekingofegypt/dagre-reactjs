@@ -1,38 +1,46 @@
-import {
-  graphlib,
-  GraphLabel,
-  layout as dagreLayout,
-  Edge,
-} from 'dagre';
+import * as d3Dag from 'd3-dag';
+
 import defaultsDeep from 'lodash/defaultsDeep';
 import { defaultNodeConfig, defaultEdgeConfig } from './config_defaults';
 import { NodeOptions, EdgeOptions, RecursivePartial, Size } from './types';
 
-export class Graph {
-  graph: graphlib.Graph;
+export class D3DagGraph {
+  dag: any;
   nodes: Array<NodeOptions>;
+  nodesMap: Map<String, NodeOptions>;
   edges: Array<EdgeOptions>;
   dirty: boolean;
+  d3DagLayout: any;
+  dagSize: Size;
 
   constructor() {
-    console.log("RUNNING DAGRE");
-    this.graph = new graphlib.Graph();
-
-    this.graph.setGraph({});
-    this.graph.setDefaultEdgeLabel(function() {
-      return {};
-    });
+    console.log("RUNNING D3Dag");
+    this.dag = d3Dag.dagStratify();
 
     this.nodes = [];
+    this.nodesMap = new Map();
     this.edges = [];
     this.dirty = false;
+    this.dagSize = {
+      width: 0,
+      height: 0
+    };
+
+    this.d3DagLayout = d3Dag
+      .sugiyama()
+      .layering(d3Dag.layeringLongestPath())
+      .decross(d3Dag.decrossTwoLayer())
+      .coord(d3Dag.coordCenter())
+      .nodeSize((node: any) => {
+        if (!node.data) {
+          return [0, 0];
+        }
+        return [node.data.width + 60, node.data.height + 60];
+      });
   }
 
-  setGraphLabelOptions(options: Partial<GraphLabel>) {
-    const graphLabel = this.graph.graph();
-
-    const opts = Object.assign(graphLabel, options);
-    this.graph.setGraph(opts);
+  setGraphLabelOptions() {
+    // no-op
   }
 
   setGraphData(
@@ -51,29 +59,18 @@ export class Graph {
       defaultsDeep({}, edge, userDefaultEdgeConfig, defaultEdgeConfig)
     );
 
-    this.graph.nodes().forEach(n => this.graph.removeNode(n));
-    this.graph.edges().forEach(e => this.graph.removeEdge(e.v, e.w));
+    this.nodesMap.clear();
 
     nodes.forEach(node => {
-      node.width = undefined;
-      node.height = undefined;
-
-      this.graph.setNode(node.id, node);
-    });
-    edges.forEach(edge => {
-      edge.width = undefined;
-      edge.height = undefined;
-      edge.points = undefined;
-
-      this.graph.setEdge(edge.from, edge.to, edge);
+      const parents = edges
+        .filter(edge => edge.to === node.id)
+        .map((edge: EdgeOptions) => edge.from);
+      node.parentIds = parents;
+      this.nodesMap.set(node.id, node);
     });
 
     this.nodes = nodes;
     this.edges = edges;
-  }
-
-  graphEdges(): Array<Edge> {
-    return this.graph.edges();
   }
 
   scheduleLayout() {
@@ -81,9 +78,40 @@ export class Graph {
   }
 
   layout() {
-    // console.log("running dagre layout");
-    dagreLayout(this.graph);
+    const dag = this.dag(this.nodes);
+    const result = this.d3DagLayout(dag);
+    this.dagSize = {
+      width: result.width,
+      height: result.height
+    };
+
+    const links = dag.links();
+    const nodes = dag.descendants();
+    nodes.forEach((node: any) => {
+      const n = this.nodesMap.get(node.id);
+      if (n) {
+        n.x = node.x;
+        n.y = node.y;
+      }
+    });
+    links.forEach((link: any) => {
+      // TODO replace this with faster lookup
+      const edge = this.edges.find(
+        edge => edge.from === link.source.id && edge.to === link.target.id
+      );
+      if (edge) {
+        edge.points = link.points;
+      }
+    });
+
     this.dirty = false;
+  }
+
+  graphSize(): Size {
+    return {
+      width: this.dagSize.width,
+      height: this.dagSize.height,
+    };
   }
 
   layoutIfSized() {
@@ -92,13 +120,6 @@ export class Graph {
       return true;
     }
     return false;
-  }
-
-  graphSize(): Size {
-    return {
-      width: this.graph.graph().width!,
-      height: this.graph.graph().height!
-    }
   }
 
   graphNodeById(id: string): NodeOptions | undefined {

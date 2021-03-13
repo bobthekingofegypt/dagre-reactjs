@@ -20,6 +20,7 @@ export const Sidebar: React.FC<{}> = () => {
         <li><Link to='/tooltips'>Tooltips</Link></li>
         <li><Link to='/customStyles'>Custom styles</Link></li>
         <li><Link to='/nodeSize'>Resize</Link></li>
+        <li><Link to='/d3dag'>D3-Dag</Link></li>
       </ul>
     </div>
   );

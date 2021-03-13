@@ -69,6 +69,11 @@ export type ShapeDefinition = {
   ) => Point;
 };
 
+export enum LayoutType {
+  Dagre = 1,
+  D3Dag
+};
+
 export interface NodeOptions {
   id: string;
   label: string;

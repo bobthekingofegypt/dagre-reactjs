@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Graph } from './graph';
+import { D3DagGraph } from './graphd3dag';
 import {
   RecursivePartial,
   ShapesDefinition,
@@ -13,6 +14,7 @@ import {
   Size,
   NodeOptions,
   EdgeOptions,
+  LayoutType
 } from './types';
 import { builtInShapes, getShapeDefinition } from './shapes/shapes';
 import { builtInNodeLabels, getNodeLabel } from './nodelabels';
@@ -53,6 +55,7 @@ export interface DagreReactProps {
     edgeMeta: EdgeOptions,
     reportSize: ReportSize
   ) => React.ReactElement<any>;
+  layoutType: LayoutType; 
 }
 
 export interface GraphOptions {
@@ -70,7 +73,7 @@ type DagreReactState = {
   nodeLabels: NodeLabelsDefinition;
   edgeLabels: EdgeLabelsDefinition;
   shapes: ShapesDefinition;
-  graph: Graph;
+  graph: Graph | D3DagGraph;
   previousStage: number;
   layoutStage: number;
 };
@@ -101,11 +104,12 @@ export default class DagreReact extends React.Component<
     graphLayoutComplete: () => {},
     stage: 1,
     layoutStage: 1,
+    layoutType: LayoutType.Dagre
   };
 
   constructor(props: DagreReactProps) {
     super(props);
-    const graph = new Graph();
+    const graph = props.layoutType === LayoutType.Dagre ? new Graph() : new D3DagGraph();
     graph.setGraphLabelOptions(props.graphOptions);
     graph.setGraphData(
       props.nodes,
@@ -171,9 +175,10 @@ export default class DagreReact extends React.Component<
       // console.log("Forcing an update");
       this.state.graph.layout();
       this.adjustIntersections();
+      const size = this.state.graph.graphSize();
       this.props.graphLayoutComplete(
-        this.state.graph.graph.graph().width,
-        this.state.graph.graph.graph().height
+        size.width,
+        size.height
       );
       this.forceUpdate();
     }
@@ -181,9 +186,6 @@ export default class DagreReact extends React.Component<
 
   render() {
     // console.log("render =====================================================");
-    if (this.state.graph.dirty) {
-    }
-
     const { renderNode, renderEdge, renderEdgeLabel } = this.props;
 
     const renderNodeFunc = renderNode || this.renderNode;
@@ -304,7 +306,7 @@ export default class DagreReact extends React.Component<
       const toShapeDefinition = getShapeDefinition(to.shape, shapes);
 
       points.unshift(
-        fromShapeDefinition.intersection(from, edgeMeta.points[0], valueCache)
+        fromShapeDefinition.intersection(from, edgeMeta.points[1], valueCache)
       );
       points.push(
         toShapeDefinition.intersection(

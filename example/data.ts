@@ -1088,3 +1088,197 @@ export const customNodeSize: {
     }
   ]
 };
+
+export const d3DagGrafo: {
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+} = {
+  nodes: [
+    {
+      id: "0",
+      label: "0",
+    },
+    {
+      id: "1",
+      label: "1",
+    },
+    {
+      id: "2",
+      label: "2",
+    },
+    {
+      id: "3",
+      label: "3",
+    },
+    {
+      id: "4",
+      label: "4",
+    },
+    {
+      id: "5",
+      label: "5",
+    },
+    {
+      id: "6",
+      label: "6",
+    },
+    {
+      id: "7",
+      label: "7",
+    },
+    {
+      id: "8",
+      label: "8",
+    },
+    {
+      id: "9",
+      label: "9",
+    },
+    {
+      id: "10",
+      label: "10",
+    },
+    {
+      id: "11",
+      label: "11",
+    },
+    {
+      id: "12",
+      label: "12",
+    },
+    {
+      id: "13",
+      label: "13",
+    },
+    {
+      id: "14",
+      label: "14",
+    },
+    {
+      id: "15",
+      label: "15",
+    },
+    {
+      id: "16",
+      label: "16",
+    },
+    {
+      id: "17",
+      label: "17",
+    },
+    {
+      id: "18",
+      label: "18",
+    },
+    {
+      id: "19",
+      label: "19",
+    },
+    {
+      id: "20",
+      label: "20",
+    },
+    {
+      id: "21",
+      label: "21",
+    },
+  ],
+  edges: [
+    {
+      from: "8",
+      to: "0"
+    },
+    {
+      from: "11",
+      to: "3"
+    },
+    {
+      from: "12",
+      to: "4"
+    },
+    {
+      from: "18",
+      to: "5"
+    },
+    {
+      from: "9",
+      to: "6"
+    },
+    {
+      from: "15",
+      to: "6"
+    },
+    {
+      from: "17",
+      to: "6"
+    },
+    {
+      from: "3",
+      to: "7"
+    },
+    {
+      from: "17",
+      to: "7"
+    },
+    {
+      from: "20",
+      to: "7"
+    },
+    {
+      from: "21",
+      to: "7"
+    },
+    {
+      from: "4",
+      to: "9"
+    },
+    {
+      from: "16",
+      to: "10"
+    },
+    {
+      from: "21",
+      to: "10"
+    },
+    {
+      from: "2",
+      to: "11"
+    },
+    {
+      from: "21",
+      to: "12"
+    },
+    {
+      from: "4",
+      to: "13"
+    },
+    {
+      from: "12",
+      to: "13"
+    },
+    {
+      from: "1",
+      to: "14"
+    },
+    {
+      from: "8",
+      to: "14"
+    },
+    {
+      from: "0",
+      to: "16"
+    },
+    {
+      from: "19",
+      to: "17"
+    },
+    {
+      from: "9",
+      to: "18"
+    },
+    {
+      from: "13",
+      to: "20"
+    },
+  ]
+};

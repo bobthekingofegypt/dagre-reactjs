@@ -16,6 +16,7 @@ import { PanAndZoom } from "./examples/PanAndZoom";
 import { Tooltips } from "./examples/Tooltips";
 import { CustomStyles } from "./examples/CustomStyles";
 import { NodeSize } from "./examples/NodeSize";
+import { D3Dag } from "./examples/D3Dag";
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -39,6 +40,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/tooltips" component={Tooltips} />
             <Route path="/customStyles" component={CustomStyles} />
             <Route path="/nodeSize" component={NodeSize} />
+            <Route path="/d3dag" component={D3Dag} />
           </Switch>
         </div>
       </div>
