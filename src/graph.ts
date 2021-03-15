@@ -1,9 +1,4 @@
-import {
-  graphlib,
-  GraphLabel,
-  layout as dagreLayout,
-  Edge,
-} from 'dagre';
+import { graphlib, GraphLabel, layout as dagreLayout, Edge } from 'dagre';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { defaultNodeConfig, defaultEdgeConfig } from './config_defaults';
 import { NodeOptions, EdgeOptions, RecursivePartial, Size } from './types';
@@ -15,7 +10,7 @@ export class Graph {
   dirty: boolean;
 
   constructor() {
-    console.log("RUNNING DAGRE");
+    console.log('RUNNING DAGRE');
     this.graph = new graphlib.Graph();
 
     this.graph.setGraph({});
@@ -97,8 +92,8 @@ export class Graph {
   graphSize(): Size {
     return {
       width: this.graph.graph().width!,
-      height: this.graph.graph().height!
-    }
+      height: this.graph.graph().height!,
+    };
   }
 
   graphNodeById(id: string): NodeOptions | undefined {

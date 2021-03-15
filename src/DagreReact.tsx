@@ -14,7 +14,7 @@ import {
   Size,
   NodeOptions,
   EdgeOptions,
-  LayoutType
+  LayoutType,
 } from './types';
 import { builtInShapes, getShapeDefinition } from './shapes/shapes';
 import { builtInNodeLabels, getNodeLabel } from './nodelabels';
@@ -55,7 +55,7 @@ export interface DagreReactProps {
     edgeMeta: EdgeOptions,
     reportSize: ReportSize
   ) => React.ReactElement<any>;
-  layoutType: LayoutType; 
+  layoutType: LayoutType;
 }
 
 export interface GraphOptions {
@@ -104,12 +104,13 @@ export default class DagreReact extends React.Component<
     graphLayoutComplete: () => {},
     stage: 1,
     layoutStage: 1,
-    layoutType: LayoutType.Dagre
+    layoutType: LayoutType.Dagre,
   };
 
   constructor(props: DagreReactProps) {
     super(props);
-    const graph = props.layoutType === LayoutType.Dagre ? new Graph() : new D3DagGraph();
+    const graph =
+      props.layoutType === LayoutType.Dagre ? new Graph() : new D3DagGraph();
     graph.setGraphLabelOptions(props.graphOptions);
     graph.setGraphData(
       props.nodes,
@@ -176,10 +177,7 @@ export default class DagreReact extends React.Component<
       this.state.graph.layout();
       this.adjustIntersections();
       const size = this.state.graph.graphSize();
-      this.props.graphLayoutComplete(
-        size.width,
-        size.height
-      );
+      this.props.graphLayoutComplete(size.width, size.height);
       this.forceUpdate();
     }
   }

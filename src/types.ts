@@ -71,8 +71,8 @@ export type ShapeDefinition = {
 
 export enum LayoutType {
   Dagre = 1,
-  D3Dag
-};
+  D3Dag,
+}
 
 export interface NodeOptions {
   id: string;

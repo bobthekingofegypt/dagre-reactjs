@@ -14,7 +14,7 @@ export class D3DagGraph {
   dagSize: Size;
 
   constructor() {
-    console.log("RUNNING D3Dag");
+    console.log('RUNNING D3Dag');
     this.dag = d3Dag.dagStratify();
 
     this.nodes = [];
@@ -23,7 +23,7 @@ export class D3DagGraph {
     this.dirty = false;
     this.dagSize = {
       width: 0,
-      height: 0
+      height: 0,
     };
 
     this.d3DagLayout = d3Dag
@@ -82,7 +82,7 @@ export class D3DagGraph {
     const result = this.d3DagLayout(dag);
     this.dagSize = {
       width: result.width,
-      height: result.height
+      height: result.height,
     };
 
     const links = dag.links();
