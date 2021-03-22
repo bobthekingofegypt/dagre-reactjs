@@ -1,15 +1,17 @@
 import * as React from "react";
 import { interpolateRainbow } from "d3-scale-chromatic";
 import { d3DagGrafo} from "../data";
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions, PathGeneratorTypes, LayoutType } from "../../.";
+import { DAGReact, RecursivePartial, NodeOptions, EdgeOptions, PathGeneratorTypes, LayoutType } from "dagre-reactjs";
 import { generatePathD3Curve } from "../paths/d3CatmullRomcurve";
 import GradientEdge from "../edges/GradientEdge";
+import {D3DagGraph} from "../layouts/layout-d3dag";
 
 type Basic2State = {
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
   customPathGenerators: PathGeneratorTypes;
   colorMap: any;
+  layout: any;
 };
 
 const DEFAULT_NODE_CONFIG = {
@@ -36,7 +38,7 @@ const DEFAULT_NODE_CONFIG = {
         fontWeight: "bold"
       },
     }
-  }
+  },
 };
 
 const DEFAULT_EDGE_CONFIG = {
@@ -75,6 +77,7 @@ export class D3Dag extends React.Component<{}, Basic2State> {
       customPathGenerators: {
         "d3curve": generatePathD3Curve,
       },
+      layout: new D3DagGraph()
     };
   }
 
@@ -99,7 +102,7 @@ export class D3Dag extends React.Component<{}, Basic2State> {
         <h1>D3 Dag</h1>
         <p>Graph laid out using d3-dag</p>
         <svg id="schedule" width={1150} height={1000}>
-          <DagreReact
+          <DAGReact
             nodes={nodes}
             edges={edges}
             defaultNodeConfig={DEFAULT_NODE_CONFIG}
@@ -112,7 +115,7 @@ export class D3Dag extends React.Component<{}, Basic2State> {
               ranksep: 55,
               nodesep: 35
             }}
-            layoutType={LayoutType.D3Dag}
+            graphLayout={this.state.layout}
           />
         </svg>
       </div>

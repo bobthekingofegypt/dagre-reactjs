@@ -1,6 +1,6 @@
 import * as React from "react";
 import { foreignObjects } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, NodeLabelsDefinition, EdgeLabelsDefinition } from "../../.";
+import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, NodeLabelsDefinition, EdgeLabelsDefinition } from "dagre-reactjs";
 import {Foreign} from "../nodelabels/Foreign";
 import {ForeignLabel} from "../edgelabels/ForeignLabel";
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CustomEdgeLabelProps } from "../../.";
+import { CustomEdgeLabelProps } from "dagre-reactjs";
 
 export const ForeignLabel: React.FC<CustomEdgeLabelProps> = ({ edgeMeta }) => {
   return (

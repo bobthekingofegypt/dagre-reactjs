@@ -1,6 +1,6 @@
 import * as React from "react";
 import { customShapes } from "../data";
-import { DagreReact, ValueCache, NodeOptions, EdgeOptions, Point, RecursivePartial, ShapesDefinition } from "../../.";
+import { DagreReact, ValueCache, NodeOptions, EdgeOptions, Point, RecursivePartial, ShapesDefinition } from "dagre-reactjs";
 import { House, calculateHousePoints } from "../shapes/House";
 import { intersectPolygon2, intersectPath } from "../shapes/intersects/custom";
 import {Cloud, calculateCloudPath} from "../shapes/Cloud";

@@ -1,6 +1,6 @@
 /* eslint "no-console": off */
 import { ShapeInfo, Intersection } from "kld-intersections";
-import { Point, NodeOptions } from "../../../.";
+import { Point, NodeOptions } from "dagre-reactjs";
 
 export const intersectPolygon2 = (node:NodeOptions, point: Point, polyPoints:Array<Point>): Point => {
 

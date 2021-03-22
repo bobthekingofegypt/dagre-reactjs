@@ -1,6 +1,6 @@
 import * as React from "react";
 import { tcpStateData } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
+import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "dagre-reactjs";
 
 type TCPStateState = {
   nodes: Array<RecursivePartial<NodeOptions>>;

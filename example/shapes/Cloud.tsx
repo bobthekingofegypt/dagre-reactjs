@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ShapeComponentProps, Size } from "../../.";
+import { ShapeComponentProps, Size } from "dagre-reactjs";
 
 export const calculateCloudPath = (size: Size): string => {
   const width = size.width;

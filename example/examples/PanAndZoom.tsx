@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { basic1 } from '../data';
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from '../../.';
+import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from 'dagre-reactjs';
 import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom';
 import AutoSizer from 'react-virtualized-auto-sizer';
 

@@ -1,33 +1,22 @@
-import { graphlib, GraphLabel, layout as dagreLayout, Edge } from 'dagre';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { defaultNodeConfig, defaultEdgeConfig } from './config_defaults';
-import { NodeOptions, EdgeOptions, RecursivePartial, Size } from './types';
+import { NodeOptions, EdgeOptions, GraphLayout, RecursivePartial, Size } from './types';
 
-export class Graph {
-  graph: graphlib.Graph;
+export class Graph implements GraphLayout {
   nodes: Array<NodeOptions>;
   edges: Array<EdgeOptions>;
   dirty: boolean;
+  size: Size;
 
   constructor() {
-    console.log('RUNNING DAGRE');
-    this.graph = new graphlib.Graph();
-
-    this.graph.setGraph({});
-    this.graph.setDefaultEdgeLabel(function() {
-      return {};
-    });
-
     this.nodes = [];
     this.edges = [];
+    this.size = { width: 0, height: 0 };
     this.dirty = false;
   }
 
-  setGraphLabelOptions(options: Partial<GraphLabel>) {
-    const graphLabel = this.graph.graph();
-
-    const opts = Object.assign(graphLabel, options);
-    this.graph.setGraph(opts);
+  setGraphLabelOptions(options: { [key: string]: any }) {
+    // no-op
   }
 
   setGraphData(
@@ -46,39 +35,29 @@ export class Graph {
       defaultsDeep({}, edge, userDefaultEdgeConfig, defaultEdgeConfig)
     );
 
-    this.graph.nodes().forEach(n => this.graph.removeNode(n));
-    this.graph.edges().forEach(e => this.graph.removeEdge(e.v, e.w));
-
     nodes.forEach(node => {
       node.width = undefined;
       node.height = undefined;
-
-      this.graph.setNode(node.id, node);
+      node.x = 0;
+      node.y = 0;
     });
     edges.forEach(edge => {
       edge.width = undefined;
       edge.height = undefined;
       edge.points = undefined;
-
-      this.graph.setEdge(edge.from, edge.to, edge);
     });
 
     this.nodes = nodes;
     this.edges = edges;
   }
 
-  graphEdges(): Array<Edge> {
-    return this.graph.edges();
-  }
-
   scheduleLayout() {
     this.dirty = true;
   }
 
-  layout() {
-    // console.log("running dagre layout");
-    dagreLayout(this.graph);
+  layout(): Promise<void> | undefined {
     this.dirty = false;
+    return undefined;
   }
 
   layoutIfSized() {
@@ -90,10 +69,7 @@ export class Graph {
   }
 
   graphSize(): Size {
-    return {
-      width: this.graph.graph().width!,
-      height: this.graph.graph().height!,
-    };
+    return this.size;
   }
 
   graphNodeById(id: string): NodeOptions | undefined {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { EdgeOptions } from '../../.';
+import { EdgeOptions } from 'dagre-reactjs';
 
 type EdgeProps = {
   edgeMeta: EdgeOptions;

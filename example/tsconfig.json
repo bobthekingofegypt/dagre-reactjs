@@ -13,8 +13,6 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "lib": ["es2015", "es2016", "dom"],
-    "baseUrl": ".",
-    "types": ["node"],
-    "typeRoots": [ "./types", "./node_modules/@types"]
+    "types": ["node"]
   }
 }

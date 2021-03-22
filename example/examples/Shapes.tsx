@@ -1,6 +1,6 @@
 import * as React from "react";
 import { shapes } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
+import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "dagre-reactjs";
 
 type ShapesState = {
   nodes: Array<RecursivePartial<NodeOptions>>;

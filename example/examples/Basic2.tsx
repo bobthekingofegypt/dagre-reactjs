@@ -1,6 +1,6 @@
 import * as React from "react";
 import { basic2 } from "../data";
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from "../../.";
+import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from "dagre-reactjs";
 
 type Basic2State = {
   nodes: Array<RecursivePartial<NodeOptions>>;

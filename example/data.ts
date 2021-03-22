@@ -1,4 +1,4 @@
-import { RecursivePartial, NodeOptions, EdgeOptions } from "../.";
+import { RecursivePartial, NodeOptions, EdgeOptions } from "dagre-reactjs";
 
 export const basic1: {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -1279,6 +1279,136 @@ export const d3DagGrafo: {
     {
       from: "13",
       to: "20"
+    },
+  ]
+};
+
+export const nodeOrdering: {
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+} = {
+  nodes: [
+    {
+      id: "0",
+      label: "Top Level Node 1",
+      meta: {
+        elk: {
+          layoutOptions: {
+            position: "(100.0, 0.0)"
+          }
+        }
+      }
+    },
+    {
+      id: "1",
+      label: "Top Level Node 2",
+      meta: {
+        elk: {
+          layoutOptions: {
+            position: "(10.0, 0.0)"
+          }
+        }
+      }
+    },
+    {
+      id: "2",
+      label: "Level 1, Node 1",
+    },
+    {
+      id: "3",
+      label: "Level 1, Node 2",
+    },
+    {
+      id: "4",
+      label: "Level 2, Node 2",
+      meta: {
+        elk: {
+          "layoutOptions": {
+            "algorithm": "layered",
+            "crossingMinimization.semiInteractive": "true"
+          },
+        }
+      }
+    },
+    {
+      id: "5",
+      label: "Level 2, Node 1",
+    },
+    {
+      id: "7",
+      label: "Level 3, Node 2",
+      meta: {
+        elk: {
+          layoutOptions: {
+            position: "(100.0, 0.0)"
+          }
+        }
+      }
+    },
+    {
+      id: "8",
+      label: "Level 3, Node 1",
+      meta: {
+        elk: {
+          layoutOptions: {
+            position: "(10.0, 0.0)"
+          }
+        }
+      }
+    },
+    {
+      id: "9",
+      label: "Level 4, Node 1",
+    },
+    {
+      id: "10",
+      label: "Separate Level 1, Node 1",
+    },
+    {
+      id: "11",
+      label: "Separate Level 2, Node 1",
+    },
+  ],
+  edges: [
+    {
+      from: "0",
+      to: "2"
+    },
+    {
+      from: "0",
+      to: "3"
+    },
+    {
+      from: "3",
+      to: "5"
+    },
+    {
+      from: "3",
+      to: "4"
+    },
+    {
+      from: "4",
+      to: "7"
+    },
+    {
+      from: "4",
+      to: "8"
+    },
+    {
+      from: "8",
+      to: "9"
+    },
+    {
+      from: "1",
+      to: "10"
+    },
+    {
+      from: "10",
+      to: "11"
+    },
+    {
+      from: "11",
+      to: "9"
     },
   ]
 };

@@ -21,6 +21,7 @@ export const Sidebar: React.FC<{}> = () => {
         <li><Link to='/customStyles'>Custom styles</Link></li>
         <li><Link to='/nodeSize'>Resize</Link></li>
         <li><Link to='/d3dag'>D3-Dag</Link></li>
+        <li><Link to='/elktest'>Elk test</Link></li>
       </ul>
     </div>
   );

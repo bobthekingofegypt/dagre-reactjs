@@ -74,6 +74,58 @@ export enum LayoutType {
   D3Dag,
 }
 
+export interface DAGReactProps {
+  customShapes: ShapesDefinition;
+  customNodeLabels: NodeLabelsDefinition;
+  customEdgeLabels: EdgeLabelsDefinition;
+  customPathGenerators: PathGeneratorTypes;
+  customMarkerComponents: MarkerComponents;
+  defaultNodeConfig: RecursivePartial<NodeOptions>;
+  defaultEdgeConfig: RecursivePartial<EdgeOptions>;
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+  graphLayoutComplete: (width?: number, height?: number) => void;
+  stage: number;
+  layoutStage: number;
+  renderNode?: (
+    node: NodeOptions,
+    reportSize: ReportSize,
+    valueCache: ValueCache,
+    layoutStage: number
+  ) => React.ReactElement<any>;
+  renderEdge?: (
+    index: number,
+    edgeMeta: EdgeOptions
+  ) => React.ReactElement<any>;
+  renderEdgeLabel?: (
+    index: number,
+    edgeMeta: EdgeOptions,
+    reportSize: ReportSize
+  ) => React.ReactElement<any>;
+  graphLayout: GraphLayout;
+  graphOptions: { [key: string]: any };
+}
+
+export interface GraphLayout {
+  nodes: Array<NodeOptions>;
+  edges: Array<EdgeOptions>;
+  dirty: boolean;
+  setGraphLabelOptions(options: { [key: string]: any }): void;
+  setGraphData(
+    nodesIn: Array<RecursivePartial<NodeOptions>>,
+    edgesIn: Array<RecursivePartial<EdgeOptions>>,
+    userDefaultNodeConfig: RecursivePartial<NodeOptions>,
+    userDefaultEdgeConfig: RecursivePartial<NodeOptions>
+  ): void; 
+  scheduleLayout(): void;
+  layout(): Promise<void> | undefined;
+  layoutIfSized(): boolean;
+  graphSize(): Size;
+  graphNodeById(id: string): NodeOptions | undefined;
+  setEdgeLabelSize(index: number, width: number, height: number): void;
+  setNodeSize(index: number, width: number, height: number): void;
+}
+
 export interface NodeOptions {
   id: string;
   label: string;

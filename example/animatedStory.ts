@@ -1,4 +1,4 @@
-import { RecursivePartial, NodeOptions, EdgeOptions } from "../src/types";
+import { RecursivePartial, NodeOptions, EdgeOptions } from "dagre-reactjs";
 
 type DataType = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -28,11 +28,11 @@ export const animateStory = (
                   right: 15
                 }
               },
-              shape: {
+        shape: {
                 styles: { fill: "#fff", stroke: "#000" },
-                className: "n"
+                className: "n",
               }
-            }
+            },
           });
           break;
         case "removeNode":

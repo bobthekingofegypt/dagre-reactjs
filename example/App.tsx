@@ -17,6 +17,7 @@ import { Tooltips } from "./examples/Tooltips";
 import { CustomStyles } from "./examples/CustomStyles";
 import { NodeSize } from "./examples/NodeSize";
 import { D3Dag } from "./examples/D3Dag";
+import { ElkTest } from "./examples/ElkTest";
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -41,10 +42,11 @@ class App extends React.Component<{}, {}> {
             <Route path="/customStyles" component={CustomStyles} />
             <Route path="/nodeSize" component={NodeSize} />
             <Route path="/d3dag" component={D3Dag} />
+            <Route path="/elktest" component={ElkTest} />
           </Switch>
         </div>
       </div>
-    );
+    )
   }
 }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
+import {DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "dagre-reactjs";
 import { animateStory, steps } from "../animatedStory";
 
 type TimelineState = {

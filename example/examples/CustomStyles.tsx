@@ -1,6 +1,6 @@
 import * as React from "react";
 import { customStyles } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, PathGeneratorTypes } from "../../.";
+import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, PathGeneratorTypes } from "dagre-reactjs";
 import { generatePathD3Curve } from "../paths/d3curve";
 
 type CustomStylesState = {

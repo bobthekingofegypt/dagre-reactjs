@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import { Graph } from './graph';
-import { D3DagGraph } from './graphd3dag';
 import {
-  RecursivePartial,
   ShapesDefinition,
   NodeLabelsDefinition,
   EdgeLabelsDefinition,
@@ -15,6 +12,8 @@ import {
   NodeOptions,
   EdgeOptions,
   LayoutType,
+  GraphLayout,
+  DAGReactProps
 } from './types';
 import { builtInShapes, getShapeDefinition } from './shapes/shapes';
 import { builtInNodeLabels, getNodeLabel } from './nodelabels';
@@ -26,37 +25,6 @@ import Node from './Node';
 import Edge from './Edge';
 import EdgeLabel from './EdgeLabel';
 
-export interface DagreReactProps {
-  customShapes: ShapesDefinition;
-  customNodeLabels: NodeLabelsDefinition;
-  customEdgeLabels: EdgeLabelsDefinition;
-  customPathGenerators: PathGeneratorTypes;
-  customMarkerComponents: MarkerComponents;
-  defaultNodeConfig: RecursivePartial<NodeOptions>;
-  defaultEdgeConfig: RecursivePartial<EdgeOptions>;
-  nodes: Array<RecursivePartial<NodeOptions>>;
-  edges: Array<RecursivePartial<EdgeOptions>>;
-  graphLayoutComplete: (width?: number, height?: number) => void;
-  graphOptions: GraphOptions;
-  stage: number;
-  layoutStage: number;
-  renderNode?: (
-    node: NodeOptions,
-    reportSize: ReportSize,
-    valueCache: ValueCache,
-    layoutStage: number
-  ) => React.ReactElement<any>;
-  renderEdge?: (
-    index: number,
-    edgeMeta: EdgeOptions
-  ) => React.ReactElement<any>;
-  renderEdgeLabel?: (
-    index: number,
-    edgeMeta: EdgeOptions,
-    reportSize: ReportSize
-  ) => React.ReactElement<any>;
-  layoutType: LayoutType;
-}
 
 export interface GraphOptions {
   marginx?: number;
@@ -67,13 +35,13 @@ export interface GraphOptions {
   [key: string]: number | string | object | undefined;
 }
 
-type DagreReactState = {
+type DAGReactState = {
   pathGenerators: PathGeneratorTypes;
   markerComponents: MarkerComponents;
   nodeLabels: NodeLabelsDefinition;
   edgeLabels: EdgeLabelsDefinition;
   shapes: ShapesDefinition;
-  graph: Graph | D3DagGraph;
+  graphLayout: GraphLayout;
   previousStage: number;
   layoutStage: number;
 };
@@ -83,9 +51,9 @@ const getShapeDefinitionFunc = (
 ): ((shape: string) => ShapeDefinition) => (shape: string): ShapeDefinition =>
   getShapeDefinition(shape, shapes);
 
-export default class DagreReact extends React.Component<
-  DagreReactProps,
-  DagreReactState
+export default class DAGReact extends React.Component<
+  DAGReactProps,
+  DAGReactState
 > {
   valueCache: ValueCache;
 
@@ -107,12 +75,12 @@ export default class DagreReact extends React.Component<
     layoutType: LayoutType.Dagre,
   };
 
-  constructor(props: DagreReactProps) {
+  constructor(props: DAGReactProps) {
     super(props);
-    const graph =
-      props.layoutType === LayoutType.Dagre ? new Graph() : new D3DagGraph();
-    graph.setGraphLabelOptions(props.graphOptions);
-    graph.setGraphData(
+
+    this.props.graphLayout.setGraphLabelOptions(props.graphOptions);
+    
+    props.graphLayout.setGraphData(
       props.nodes,
       props.edges,
       props.defaultNodeConfig,
@@ -125,7 +93,7 @@ export default class DagreReact extends React.Component<
       nodeLabels: { ...builtInNodeLabels, ...props.customNodeLabels },
       edgeLabels: { ...builtInEdgeLabels, ...props.customEdgeLabels },
       shapes: { ...builtInShapes, ...props.customShapes },
-      graph: graph,
+      graphLayout: props.graphLayout,
       previousStage: props.stage,
       layoutStage: props.layoutStage,
     };
@@ -135,9 +103,10 @@ export default class DagreReact extends React.Component<
 
   static getDerivedStateFromProps(nextProps: any, state: any) {
     if (nextProps.stage !== state.previousStage) {
-      const graph = state.graph;
-      graph.setGraphLabelOptions(nextProps.graphOptions);
-      graph.setGraphData(
+      console.log("resetting");
+      const graphLayout = nextProps.graphLayout;
+      graphLayout.setGraphLabelOptions(nextProps.graphOptions);
+      graphLayout.setGraphData(
         nextProps.nodes,
         nextProps.edges,
         nextProps.defaultNodeConfig,
@@ -145,7 +114,7 @@ export default class DagreReact extends React.Component<
       );
 
       return {
-        graph,
+        graphLayout,
         previousStage: nextProps.stage,
       };
     }
@@ -155,30 +124,38 @@ export default class DagreReact extends React.Component<
 
   reportEdgeLabelSize(index: number, width: number, height: number) {
     // console.log("edge label");
-    this.state.graph.setEdgeLabelSize(index, width, height);
+    this.state.graphLayout.setEdgeLabelSize(index, width, height);
     this.checkRender();
   }
 
   reportNodeSize(index: number, width: number, height: number) {
     // console.log("node size");
-    this.state.graph.setNodeSize(index, width, height);
+    this.state.graphLayout.setNodeSize(index, width, height);
     this.checkRender();
   }
 
   checkRender() {
-    if (this.state.graph.layoutIfSized()) {
+    if (this.state.graphLayout.layoutIfSized()) {
       this.forceUpdate();
     }
   }
 
   componentDidUpdate() {
-    if (this.state.graph.dirty) {
-      // console.log("Forcing an update");
-      this.state.graph.layout();
-      this.adjustIntersections();
-      const size = this.state.graph.graphSize();
-      this.props.graphLayoutComplete(size.width, size.height);
-      this.forceUpdate();
+    if (this.state.graphLayout.dirty) {
+      console.log("Forcing a layout");
+      const returnValue = this.state.graphLayout.layout();
+      const adjustForResults = () => {
+          console.log("layout is done");
+          this.adjustIntersections();
+          const size = this.state.graphLayout.graphSize();
+          this.props.graphLayoutComplete(size.width, size.height);
+          this.forceUpdate();
+      }
+      if (returnValue) {
+        returnValue.then(adjustForResults);
+      } else {
+        adjustForResults();
+      }
     }
   }
 
@@ -189,10 +166,11 @@ export default class DagreReact extends React.Component<
     const renderNodeFunc = renderNode || this.renderNode;
     const renderEdgeFunc = renderEdge || this.renderEdge;
     const renderEdgeLabelFunc = renderEdgeLabel || this.renderEdgeLabel;
-    const graph = this.state.graph;
+    const graph = this.state.graphLayout;
     const edges = graph.edges;
     const nodes = graph.nodes;
 
+    console.log(edges);
     return (
       <g>
         {nodes.map((node, index) => {
@@ -281,13 +259,13 @@ export default class DagreReact extends React.Component<
   };
 
   adjustIntersections = () => {
-    const { graph, shapes, pathGenerators } = this.state;
+    const { graphLayout, shapes, pathGenerators } = this.state;
     const valueCache = this.valueCache;
-    const edges = this.state.graph.edges;
+    const edges = this.state.graphLayout.edges;
 
     edges.forEach(edgeMeta => {
-      const from = graph.graphNodeById(edgeMeta.from);
-      const to = graph.graphNodeById(edgeMeta.to);
+      const from = graphLayout.graphNodeById(edgeMeta.from);
+      const to = graphLayout.graphNodeById(edgeMeta.to);
 
       if (!from || !to) {
         throw new Error('graph node not found from edge');

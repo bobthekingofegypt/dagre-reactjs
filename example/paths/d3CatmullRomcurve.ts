@@ -1,4 +1,4 @@
-import { Point } from "../../.";
+import { Point } from "dagre-reactjs";
 
 import * as d3 from "d3-shape";
 

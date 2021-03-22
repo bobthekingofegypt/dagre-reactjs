@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CustomNodeLabelProps } from "../../.";
+import { CustomNodeLabelProps } from "dagre-reactjs";
 
 export const Foreign: React.FC<CustomNodeLabelProps> = ({ node }) => {
   return (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ShapeComponentProps, Point, Size } from "../../.";
+import { ShapeComponentProps, Point, Size } from "dagre-reactjs";
 
 export const calculateHousePoints = (size: Size): Array<Point> => {
   const width = size.width;
