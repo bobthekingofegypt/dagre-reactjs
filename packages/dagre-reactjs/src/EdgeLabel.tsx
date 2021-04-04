@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import useSize from './useSize';
 import { EdgeOptions, ReportSize } from './types';
+import useSize from './useSize';
 
 declare module 'react' {
   interface HTMLAttributes<T> {
@@ -13,6 +13,7 @@ type EdgeLabelProps = {
   html: boolean;
   edgeMeta: EdgeOptions;
   reportSize: ReportSize;
+  // TODO is this required?
   children: () => React.ReactElement<any>;
 };
 
@@ -45,8 +46,8 @@ const EdgeLabel: React.FC<EdgeLabelProps> = ({
     return null;
   }
 
-  const x = edgeMeta.x! || 0;
-  const y = edgeMeta.y! || 0;
+  const x = edgeMeta.x || 0;
+  const y = edgeMeta.y || 0;
   const offsetX = -(edgeMeta.width || 0) / 2;
   const offsetY = -(edgeMeta.height || 0) / 2;
 

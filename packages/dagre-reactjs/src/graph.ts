@@ -1,6 +1,13 @@
 import defaultsDeep from 'lodash/defaultsDeep';
-import { defaultNodeConfig, defaultEdgeConfig } from './config_defaults';
-import { NodeOptions, EdgeOptions, GraphLayout, RecursivePartial, Size } from './types';
+
+import { defaultEdgeConfig, defaultNodeConfig } from './config_defaults';
+import {
+  EdgeOptions,
+  GraphLayout,
+  NodeOptions,
+  RecursivePartial,
+  Size,
+} from './types';
 
 export class Graph implements GraphLayout {
   nodes: Array<NodeOptions>;
@@ -15,7 +22,7 @@ export class Graph implements GraphLayout {
     this.dirty = false;
   }
 
-  setGraphLabelOptions(options: { [key: string]: any }) {
+  setGraphLabelOptions(_: { [key: string]: any }) {
     // no-op
   }
 
@@ -28,20 +35,20 @@ export class Graph implements GraphLayout {
     const nodesInCopy: Array<NodeOptions> = JSON.parse(JSON.stringify(nodesIn));
     const edgesInCopy: Array<EdgeOptions> = JSON.parse(JSON.stringify(edgesIn));
 
-    const nodes = nodesInCopy.map(node =>
+    const nodes = nodesInCopy.map((node) =>
       defaultsDeep({}, node, userDefaultNodeConfig, defaultNodeConfig)
     );
-    const edges = edgesInCopy.map(edge =>
+    const edges = edgesInCopy.map((edge) =>
       defaultsDeep({}, edge, userDefaultEdgeConfig, defaultEdgeConfig)
     );
 
-    nodes.forEach(node => {
+    nodes.forEach((node) => {
       node.width = undefined;
       node.height = undefined;
       node.x = 0;
       node.y = 0;
     });
-    edges.forEach(edge => {
+    edges.forEach((edge) => {
       edge.width = undefined;
       edge.height = undefined;
       edge.points = undefined;
@@ -73,7 +80,7 @@ export class Graph implements GraphLayout {
   }
 
   graphNodeById(id: string): NodeOptions | undefined {
-    return this.nodes.find(node => node.id === id);
+    return this.nodes.find((node) => node.id === id);
   }
 
   setEdgeLabelSize(index: number, width: number, height: number) {
@@ -97,10 +104,10 @@ export class Graph implements GraphLayout {
     const edges = this.edges;
 
     const nonSizedEdge = edges.find(
-      edge => !(edge.width !== undefined && edge.height !== undefined)
+      (edge) => !(edge.width !== undefined && edge.height !== undefined)
     );
     const nonSizedNode = nodes.find(
-      node => !(node.width !== undefined && node.height !== undefined)
+      (node) => !(node.width !== undefined && node.height !== undefined)
     );
     // console.log(
     // `nonSizedNode: ${nonSizedNode}; nonSizedEdge: ${nonSizedEdge}`,

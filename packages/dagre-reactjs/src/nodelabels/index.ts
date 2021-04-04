@@ -1,5 +1,5 @@
+import { NodeLabelDefinition, NodeLabelsDefinition } from '../types';
 import { Text } from './Text';
-import { NodeLabelsDefinition, NodeLabelDefinition } from '../types';
 
 export const builtInNodeLabels: NodeLabelsDefinition = {
   text: {

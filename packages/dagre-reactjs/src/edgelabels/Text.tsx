@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { CustomEdgeLabelProps } from '../types';
 
 export const Text: React.FC<CustomEdgeLabelProps> = ({ edgeMeta }) => {

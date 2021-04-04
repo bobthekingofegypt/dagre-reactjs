@@ -1,14 +1,11 @@
 import * as React from 'react';
 
-import { LayoutDagre } from './layout-dagre';
 import DAGReact from './DAGReact';
-import {
-  LayoutType,
-  DAGReactProps
-} from './types';
+import { LayoutDagre } from './layout-dagre';
+import { DAGReactGeneralProps, LayoutType } from './types';
 
-type DagreReactProps = DAGReactProps & {
-  graphOptions: GraphOptions
+type DagreReactProps = DAGReactGeneralProps & {
+  graphOptions: GraphOptions;
 };
 
 export interface GraphOptions {
@@ -40,7 +37,9 @@ export default class DagreReact extends React.Component<
     nodes: [],
     edges: [],
     graphOptions: {},
-    graphLayoutComplete: () => {},
+    graphLayoutComplete: () => {
+      return undefined;
+    },
     stage: 1,
     layoutStage: 1,
     layoutType: LayoutType.Dagre,
@@ -50,16 +49,11 @@ export default class DagreReact extends React.Component<
     super(props);
 
     this.state = {
-      graphLayout: new LayoutDagre()
+      graphLayout: new LayoutDagre(),
     };
   }
 
   render() {
-    return (
-      <DAGReact 
-        {...this.props}
-        {...this.state}
-      />
-    );
+    return <DAGReact {...this.props} {...this.state} />;
   }
 }

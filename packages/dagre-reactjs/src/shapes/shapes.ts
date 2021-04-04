@@ -1,10 +1,10 @@
-import { Rect } from './Rect';
+import { ShapeDefinition, ShapesDefinition } from '../types';
 import { Circle } from './Circle';
-import { intersectRect } from './intersects/rect';
-import { intersectEllipse } from './intersects/ellipse';
-import { ShapesDefinition, ShapeDefinition } from '../types';
 import { Diamond } from './Diamond';
 import { intersectDiamond } from './intersects/diamond';
+import { intersectEllipse } from './intersects/ellipse';
+import { intersectRect } from './intersects/rect';
+import { Rect } from './Rect';
 
 export const builtInShapes: ShapesDefinition = {
   rect: {

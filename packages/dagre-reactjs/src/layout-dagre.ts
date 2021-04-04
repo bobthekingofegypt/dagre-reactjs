@@ -1,6 +1,12 @@
-import { graphlib, GraphLabel, layout as dagreLayout } from 'dagre';
+import { GraphLabel, graphlib, layout as dagreLayout } from 'dagre';
+
 import { Graph as Layout } from './graph';
-import { NodeOptions, EdgeOptions, RecursivePartial, GraphLayout } from './types';
+import {
+  EdgeOptions,
+  GraphLayout,
+  NodeOptions,
+  RecursivePartial,
+} from './types';
 
 export class LayoutDagre extends Layout implements GraphLayout {
   graph: graphlib.Graph;
@@ -11,7 +17,7 @@ export class LayoutDagre extends Layout implements GraphLayout {
     this.graph = new graphlib.Graph();
 
     this.graph.setGraph({});
-    this.graph.setDefaultEdgeLabel(function() {
+    this.graph.setDefaultEdgeLabel(function () {
       return {};
     });
   }
@@ -29,24 +35,30 @@ export class LayoutDagre extends Layout implements GraphLayout {
     userDefaultNodeConfig: RecursivePartial<NodeOptions>,
     userDefaultEdgeConfig: RecursivePartial<NodeOptions>
   ) {
-    super.setGraphData(nodesIn, edgesIn, userDefaultNodeConfig, userDefaultEdgeConfig);
+    super.setGraphData(
+      nodesIn,
+      edgesIn,
+      userDefaultNodeConfig,
+      userDefaultEdgeConfig
+    );
 
-    this.graph.nodes().forEach(n => this.graph.removeNode(n));
-    this.graph.edges().forEach(e => this.graph.removeEdge(e.v, e.w));
+    this.graph.nodes().forEach((n) => this.graph.removeNode(n));
+    this.graph.edges().forEach((e) => this.graph.removeEdge(e.v, e.w));
 
-    this.nodes.forEach(node => {
+    this.nodes.forEach((node) => {
       this.graph.setNode(node.id, node);
     });
-    this.edges.forEach(edge => {
+    this.edges.forEach((edge) => {
       this.graph.setEdge(edge.from, edge.to, edge);
     });
   }
 
   layout() {
     dagreLayout(this.graph);
+    const graphLabel = this.graph.graph();
     this.size = {
-      width: this.graph.graph().width!,
-      height: this.graph.graph().height!,
+      width: graphLabel.width != null ? graphLabel.width : 0,
+      height: graphLabel.height != null ? graphLabel.height : 0,
     };
     this.dirty = false;
     return undefined;

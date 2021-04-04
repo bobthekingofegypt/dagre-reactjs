@@ -1,23 +1,25 @@
-import * as React from "react";
-import { Switch, Route } from "react-router-dom";
-import "./App.css";
-import { Sidebar } from "./Sidebar";
-import { Basic1 } from "./examples/Basic1";
-import { Basic2 } from "./examples/Basic2";
-import { Shapes } from "./examples/Shapes";
-import { TCPState } from "./examples/TCPState";
-import {CustomShapes} from "./examples/CustomShapes";
-import {ForeignObjects1} from "./examples/ForeignObjects1";
-import {CustomPathsType} from "./examples/CustomPathType";
-import {Timeline} from "./examples/Timeline";
-import { MouseEvents } from "./examples/MouseEvents";
-import { CustomButtonNodes} from "./examples/CustomButtonNodes";
-import { PanAndZoom } from "./examples/PanAndZoom";
-import { Tooltips } from "./examples/Tooltips";
-import { CustomStyles } from "./examples/CustomStyles";
-import { NodeSize } from "./examples/NodeSize";
-import { D3Dag } from "./examples/D3Dag";
-import { ElkTest } from "./examples/ElkTest";
+import './App.css';
+
+import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+import { Basic1 } from './examples/Basic1';
+import { Basic2 } from './examples/Basic2';
+import { CustomButtonNodes } from './examples/CustomButtonNodes';
+import { CustomPathsType } from './examples/CustomPathType';
+import { CustomShapes } from './examples/CustomShapes';
+import { CustomStyles } from './examples/CustomStyles';
+import { D3Dag } from './examples/D3Dag';
+import { ElkTest } from './examples/ElkTest';
+import { ForeignObjects1 } from './examples/ForeignObjects1';
+import { MouseEvents } from './examples/MouseEvents';
+import { NodeSize } from './examples/NodeSize';
+import { PanAndZoom } from './examples/PanAndZoom';
+import { Shapes } from './examples/Shapes';
+import { TCPState } from './examples/TCPState';
+import { Timeline } from './examples/Timeline';
+import { Tooltips } from './examples/Tooltips';
+import { Sidebar } from './Sidebar';
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -46,7 +48,7 @@ class App extends React.Component<{}, {}> {
           </Switch>
         </div>
       </div>
-    )
+    );
   }
 }
 

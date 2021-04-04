@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import useSize from './useSize';
 import { NodeOptions, ReportSize, Size } from './types';
+import useSize from './useSize';
 import { ValueCache } from './valuecache';
 
 declare module 'react' {

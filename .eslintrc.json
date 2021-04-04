@@ -39,7 +39,8 @@
     "simple-import-sort/sort": "warn",
     "no-console": "off",
     "sort-keys": "off",
-    "sort-imports": "off"
+    "sort-imports": "off",
+    "react/prop-types": "off"
   },
   "env": {
     "browser": true,

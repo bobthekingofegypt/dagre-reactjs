@@ -1,8 +1,16 @@
-import * as React from "react";
-import { customPaths } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, PathGeneratorTypes, MarkerComponents } from "dagre-reactjs";
-import { generatePathD3Curve } from "../paths/d3curve";
-import { CircleMarker } from "../markers/CircleMarker";
+import {
+  DagreReact,
+  EdgeOptions,
+  MarkerComponents,
+  NodeOptions,
+  PathGeneratorTypes,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { customPaths } from '../data';
+import { CircleMarker } from '../markers/CircleMarker';
+import { generatePathD3Curve } from '../paths/d3curve';
 
 type CustomPathsState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -18,12 +26,12 @@ const DEFAULT_NODE_CONFIG = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
-    label: {}
-  }
+    label: {},
+  },
 };
 
 export class CustomPathsType extends React.Component<{}, CustomPathsState> {
@@ -34,11 +42,11 @@ export class CustomPathsType extends React.Component<{}, CustomPathsState> {
       nodes: customPaths.nodes,
       edges: customPaths.edges,
       customPathGenerators: {
-        "d3curve": generatePathD3Curve,
+        d3curve: generatePathD3Curve,
       },
       customMarkerComponents: {
-        "circle": CircleMarker,
-      }
+        circle: CircleMarker,
+      },
     };
   }
 
@@ -48,7 +56,10 @@ export class CustomPathsType extends React.Component<{}, CustomPathsState> {
     return (
       <div>
         <h1>Custom edge paths</h1>
-        <p>Example that shows the use of custom interpolation for paths and custom markers</p>
+        <p>
+          Example that shows the use of custom interpolation for paths and
+          custom markers
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -60,7 +71,7 @@ export class CustomPathsType extends React.Component<{}, CustomPathsState> {
               marginx: 15,
               marginy: 15,
               ranksep: 155,
-              nodesep: 135
+              nodesep: 135,
             }}
           />
         </svg>

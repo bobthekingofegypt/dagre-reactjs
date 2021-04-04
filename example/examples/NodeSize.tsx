@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import {
   DagreReact,
+  EdgeOptions,
   Node,
+  NodeOptions,
   Rect,
-  ValueCache,
   RecursivePartial,
   ReportSize,
   Size,
-  NodeOptions,
-  EdgeOptions,
+  ValueCache,
 } from '../../dist/';
 import { customNodeSize } from '../data';
 

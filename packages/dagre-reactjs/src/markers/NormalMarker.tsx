@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { MarkerProps } from '../types';
 
 export const NormalMarker: React.FC<MarkerProps> = ({ edgeMeta, markerId }) => {

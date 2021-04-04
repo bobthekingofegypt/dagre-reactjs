@@ -1,5 +1,5 @@
-import { generatePath } from './normal';
 import { PathGenerator, PathGeneratorTypes } from '../types';
+import { generatePath } from './normal';
 
 export const builtInPaths: PathGeneratorTypes = {
   normal: generatePath,

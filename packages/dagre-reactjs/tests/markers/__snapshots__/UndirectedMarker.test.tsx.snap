@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndirectedMarker renders correctly 1`] = `
+<marker
+  id="testID"
+  markerHeight="6"
+  markerUnits="strokeWidth"
+  markerWidth="8"
+  orient="auto"
+  refX="9"
+  refY="5"
+  viewBox="0 0 10 10"
+>
+  <path
+    d="M 0 5 L 10 5"
+    style={
+      Object {
+        "strokeDasharray": "1, 0",
+        "strokeWidth": 1,
+      }
+    }
+  />
+</marker>
+`;

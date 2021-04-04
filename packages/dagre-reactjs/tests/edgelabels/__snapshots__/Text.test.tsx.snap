@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders correctly 1`] = `
+<text
+  style={Object {}}
+>
+  <tspan
+    dy="1em"
+    x="1"
+    xmlSpace="preserve"
+  >
+    test label
+  </tspan>
+</text>
+`;

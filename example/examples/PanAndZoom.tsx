@@ -1,8 +1,14 @@
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
 import * as React from 'react';
-import { basic1 } from '../data';
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from 'dagre-reactjs';
 import { UncontrolledReactSVGPanZoom } from 'react-svg-pan-zoom';
 import AutoSizer from 'react-virtualized-auto-sizer';
+
+import { basic1 } from '../data';
 
 type PanAndZoomState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -29,14 +35,14 @@ export class PanAndZoom extends React.Component<{}, PanAndZoomState> {
     const { nodes, edges } = this.state;
 
     return (
-      <div style={{ height: "100%" }}>
+      <div style={{ height: '100%' }}>
         <h1>Pan and zoom</h1>
         <p>
           Example that shows how pan and zoom can be implementing using third
           party libraries. This functionality will not be provided directly by
           this library.
         </p>
-        <div style={{ height: "100%" }}>
+        <div style={{ height: '100%' }}>
           <AutoSizer>
             {({ height, width }) => (
               <UncontrolledReactSVGPanZoom
@@ -56,7 +62,7 @@ export class PanAndZoom extends React.Component<{}, PanAndZoomState> {
                   SVGAlignX: undefined,
                   SVGAlignY: undefined,
                 }}
-                ref={viewer => (this.viewer = viewer)}
+                ref={(viewer) => (this.viewer = viewer)}
               >
                 <svg
                   id="schedule"

@@ -1,30 +1,29 @@
 import * as React from 'react';
 
-import {
-  ShapesDefinition,
-  NodeLabelsDefinition,
-  EdgeLabelsDefinition,
-  PathGeneratorTypes,
-  MarkerComponents,
-  ShapeDefinition,
-  ReportSize,
-  Size,
-  NodeOptions,
-  EdgeOptions,
-  LayoutType,
-  GraphLayout,
-  DAGReactProps
-} from './types';
-import { builtInShapes, getShapeDefinition } from './shapes/shapes';
-import { builtInNodeLabels, getNodeLabel } from './nodelabels';
-import { builtInEdgeLabels, getEdgeLabel } from './edgelabels';
-import { getPathGenerator, builtInPaths } from './paths';
-import { ValueCache } from './valuecache';
-import { builtInMarkers, getMarkerComponent } from './markers';
-import Node from './Node';
 import Edge from './Edge';
 import EdgeLabel from './EdgeLabel';
-
+import { builtInEdgeLabels, getEdgeLabel } from './edgelabels';
+import { builtInMarkers, getMarkerComponent } from './markers';
+import Node from './Node';
+import { builtInNodeLabels, getNodeLabel } from './nodelabels';
+import { builtInPaths, getPathGenerator } from './paths';
+import { builtInShapes, getShapeDefinition } from './shapes/shapes';
+import {
+  DAGReactProps,
+  EdgeLabelsDefinition,
+  EdgeOptions,
+  GraphLayout,
+  LayoutType,
+  MarkerComponents,
+  NodeLabelsDefinition,
+  NodeOptions,
+  PathGeneratorTypes,
+  ReportSize,
+  ShapeDefinition,
+  ShapesDefinition,
+  Size,
+} from './types';
+import { ValueCache } from './valuecache';
 
 export interface GraphOptions {
   marginx?: number;
@@ -69,7 +68,9 @@ export default class DAGReact extends React.Component<
     nodes: [],
     edges: [],
     graphOptions: {},
-    graphLayoutComplete: () => {},
+    graphLayoutComplete: () => {
+      /*no-op*/
+    },
     stage: 1,
     layoutStage: 1,
     layoutType: LayoutType.Dagre,
@@ -79,7 +80,7 @@ export default class DAGReact extends React.Component<
     super(props);
 
     this.props.graphLayout.setGraphLabelOptions(props.graphOptions);
-    
+
     props.graphLayout.setGraphData(
       props.nodes,
       props.edges,
@@ -103,7 +104,7 @@ export default class DAGReact extends React.Component<
 
   static getDerivedStateFromProps(nextProps: any, state: any) {
     if (nextProps.stage !== state.previousStage) {
-      console.log("resetting");
+      console.log('resetting');
       const graphLayout = nextProps.graphLayout;
       graphLayout.setGraphLabelOptions(nextProps.graphOptions);
       graphLayout.setGraphData(
@@ -142,15 +143,15 @@ export default class DAGReact extends React.Component<
 
   componentDidUpdate() {
     if (this.state.graphLayout.dirty) {
-      console.log("Forcing a layout");
+      console.log('Forcing a layout');
       const returnValue = this.state.graphLayout.layout();
       const adjustForResults = () => {
-          console.log("layout is done");
-          this.adjustIntersections();
-          const size = this.state.graphLayout.graphSize();
-          this.props.graphLayoutComplete(size.width, size.height);
-          this.forceUpdate();
-      }
+        console.log('layout is done');
+        this.adjustIntersections();
+        const size = this.state.graphLayout.graphSize();
+        this.props.graphLayoutComplete(size.width, size.height);
+        this.forceUpdate();
+      };
       if (returnValue) {
         returnValue.then(adjustForResults);
       } else {
@@ -263,7 +264,7 @@ export default class DAGReact extends React.Component<
     const valueCache = this.valueCache;
     const edges = this.state.graphLayout.edges;
 
-    edges.forEach(edgeMeta => {
+    edges.forEach((edgeMeta) => {
       const from = graphLayout.graphNodeById(edgeMeta.from);
       const to = graphLayout.graphNodeById(edgeMeta.to);
 
@@ -276,7 +277,7 @@ export default class DAGReact extends React.Component<
         );
       }
 
-      let points = edgeMeta.points.slice(1, edgeMeta.points.length - 1);
+      const points = edgeMeta.points.slice(1, edgeMeta.points.length - 1);
 
       const fromShapeDefinition = getShapeDefinition(from.shape, shapes);
       const toShapeDefinition = getShapeDefinition(to.shape, shapes);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { MarkerComponent, EdgeOptions } from './types';
+import { EdgeOptions, MarkerComponent } from './types';
 
 type EdgeProps = {
   edgeMeta: EdgeOptions;
@@ -9,12 +9,10 @@ type EdgeProps = {
 };
 
 const Edge: React.FC<EdgeProps> = ({ index, edgeMeta, markerComponent }) => {
-  // console.log("WTF", edgeMeta);
   if (!edgeMeta || !edgeMeta.points) {
     return null;
   }
 
-  // console.log("WTF 2");
   const MarkerComponent = markerComponent;
   const markerId = `marker${index}`;
 

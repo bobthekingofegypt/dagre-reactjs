@@ -1,7 +1,18 @@
-import * as React from "react";
-import { customButtonNodes } from "../data";
-import { DagreReact, Node, Rect, ValueCache, RecursivePartial, ReportSize, Size, NodeOptions, EdgeOptions } from "dagre-reactjs";
-import { CustomButtonLabel } from "../nodelabels/CustomButtonLabel";
+import {
+  DagreReact,
+  EdgeOptions,
+  Node,
+  NodeOptions,
+  Rect,
+  RecursivePartial,
+  ReportSize,
+  Size,
+  ValueCache,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { customButtonNodes } from '../data';
+import { CustomButtonLabel } from '../nodelabels/CustomButtonLabel';
 
 export type CustomButtonNodesState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -16,12 +27,12 @@ export class CustomButtonNodes extends React.Component<
     super(props);
 
     this.state = {
-      ...customButtonNodes
+      ...customButtonNodes,
     };
   }
 
   buttonClicked = (node: NodeOptions) => {
-    console.log("button clicked");
+    console.log('button clicked');
     alert(`node ${node.id} button clicked`);
   };
 
@@ -48,7 +59,7 @@ export class CustomButtonNodes extends React.Component<
               title={node.label}
               description={node.meta.description}
             />
-          )
+          ),
         }}
       </Node>
     );
@@ -60,7 +71,11 @@ export class CustomButtonNodes extends React.Component<
     return (
       <div>
         <h1>Custom button nodes</h1>
-        <p>Example that shows the use of custom foreign objects using the override renderNode method.  This allows the insertion of your own event handling, prop passing or complex flows you may want to perform</p>
+        <p>
+          Example that shows the use of custom foreign objects using the
+          override renderNode method. This allows the insertion of your own
+          event handling, prop passing or complex flows you may want to perform
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -69,9 +84,9 @@ export class CustomButtonNodes extends React.Component<
             graphOptions={{
               marginx: 15,
               marginy: 15,
-              rankdir: "LR",
+              rankdir: 'LR',
               ranksep: 55,
-              nodesep: 15
+              nodesep: 15,
             }}
           />
         </svg>

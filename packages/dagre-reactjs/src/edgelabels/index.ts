@@ -1,5 +1,5 @@
+import { EdgeLabelDefinition, EdgeLabelsDefinition } from '../types';
 import { Text } from './Text';
-import { EdgeLabelsDefinition, EdgeLabelDefinition } from '../types';
 
 export const builtInEdgeLabels: EdgeLabelsDefinition = {
   text: {

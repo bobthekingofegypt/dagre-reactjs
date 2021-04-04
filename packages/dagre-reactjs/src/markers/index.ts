@@ -1,8 +1,7 @@
-import { NormalMarker } from './NormalMarker';
-import { VeeMarker } from './VeeMarker';
-import { UndirectedMarker } from './UndirectedMarker';
-
 import { MarkerComponent, MarkerComponents } from '../types';
+import { NormalMarker } from './NormalMarker';
+import { UndirectedMarker } from './UndirectedMarker';
+import { VeeMarker } from './VeeMarker';
 
 export const builtInMarkers: MarkerComponents = {
   normal: NormalMarker,

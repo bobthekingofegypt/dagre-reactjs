@@ -8,10 +8,10 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@types/d3-scale-chromatic": "^2.0.0",
     "@types/d3-shape": "^1.3.2",
     "@types/dagre": "^0.7.42",
     "@types/react-router-dom": "^5.1.3",
-    "@types/react-tooltip": "^3.11.0",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "d3-dag": "^0.6.3",
     "d3-scale-chromatic": "^2.0.0",
@@ -27,7 +27,7 @@
     "react-dom": "^0.14.0 || ^15.0.0-0 || ^16.0.0",
     "react-router-dom": "^5.1.2",
     "react-svg-pan-zoom": "^3.7.1",
-    "react-tooltip": "^3.11.1",
+    "react-tooltip": "^4.2.17",
     "react-virtualized-auto-sizer": "^1.0.2",
     "shapes": "^0.4.0",
     "web-worker": "^1.0.0"

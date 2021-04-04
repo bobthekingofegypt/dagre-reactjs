@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rect renders correctly 1`] = `
+<rect
+  data-tip="hello world"
+  height={50}
+  rx={5}
+  ry={5}
+  style={
+    Object {
+      "fillOpacity": 0,
+      "stroke": "#000",
+    }
+  }
+  width={50}
+  x={-25}
+  y={-25}
+/>
+`;

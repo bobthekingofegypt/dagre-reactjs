@@ -1,9 +1,17 @@
-import { ValueCache } from './valuecache';
 import * as CSS from 'csstype';
+
+import { ValueCache } from './valuecache';
 
 export type ReportSize = (width: number, height: number) => void;
 
 export type Size = {
+  width: number;
+  height: number;
+};
+
+export type Dimensions = {
+  x: number;
+  y: number;
   width: number;
   height: number;
 };
@@ -74,7 +82,9 @@ export enum LayoutType {
   D3Dag,
 }
 
-export interface DAGReactProps {
+export type DAGReactProps = DAGReactGeneralProps & DAGReactGraphLayoutProps;
+
+export interface DAGReactGeneralProps {
   customShapes: ShapesDefinition;
   customNodeLabels: NodeLabelsDefinition;
   customEdgeLabels: EdgeLabelsDefinition;
@@ -102,8 +112,11 @@ export interface DAGReactProps {
     edgeMeta: EdgeOptions,
     reportSize: ReportSize
   ) => React.ReactElement<any>;
-  graphLayout: GraphLayout;
   graphOptions: { [key: string]: any };
+}
+
+export interface DAGReactGraphLayoutProps {
+  graphLayout: GraphLayout;
 }
 
 export interface GraphLayout {
@@ -116,7 +129,7 @@ export interface GraphLayout {
     edgesIn: Array<RecursivePartial<EdgeOptions>>,
     userDefaultNodeConfig: RecursivePartial<NodeOptions>,
     userDefaultEdgeConfig: RecursivePartial<NodeOptions>
-  ): void; 
+  ): void;
   scheduleLayout(): void;
   layout(): Promise<void> | undefined;
   layoutIfSized(): boolean;

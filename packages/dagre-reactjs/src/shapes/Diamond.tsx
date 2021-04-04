@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ShapeComponentProps, Point, Size } from '../../src/types';
+
+import { Point, ShapeComponentProps, Size } from '../../src/types';
 
 export const calculateDiamondPoints = (size: Size): Array<Point> => {
   const width = (size.width * Math.SQRT2) / 2;
@@ -25,7 +26,7 @@ export const Diamond: React.FC<ShapeComponentProps> = ({ node, innerSize }) => {
   return (
     <polygon
       style={node.styles.shape.styles || {}}
-      points={points.map(p => `${p.x}, ${p.y}`).join(' ')}
+      points={points.map((p) => `${p.x}, ${p.y}`).join(' ')}
     />
   );
 };

@@ -1,6 +1,6 @@
 import { generatePath } from '../../src/paths/normal';
 
-test('adds 1 + 2 to equal 3', () => {
+test('basic points array generates correct path', () => {
   const points = [
     {
       x: 1,

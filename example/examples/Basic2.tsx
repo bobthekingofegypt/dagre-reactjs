@@ -1,6 +1,12 @@
-import * as React from "react";
-import { basic2 } from "../data";
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from "dagre-reactjs";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { basic2 } from '../data';
 
 type Basic2State = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -14,19 +20,18 @@ const DEFAULT_NODE_CONFIG = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {
-      styles: { stroke: "#000" },
-      className: "basic2"
+      styles: { stroke: '#000' },
+      className: 'basic2',
     },
     label: {
-      className: "basic2label"
-    }
-  }
+      className: 'basic2label',
+    },
+  },
 };
-
 
 export class Basic2 extends React.Component<{}, Basic2State> {
   constructor(props: {}) {
@@ -34,7 +39,7 @@ export class Basic2 extends React.Component<{}, Basic2State> {
 
     this.state = {
       nodes: basic2.nodes,
-      edges: basic2.edges 
+      edges: basic2.edges,
     };
   }
 
@@ -44,7 +49,9 @@ export class Basic2 extends React.Component<{}, Basic2State> {
     return (
       <div>
         <h1>Basic 2</h1>
-        <p>Extends basic 1 with some custom class names applied to the end nodes</p>
+        <p>
+          Extends basic 1 with some custom class names applied to the end nodes
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -54,7 +61,7 @@ export class Basic2 extends React.Component<{}, Basic2State> {
               marginx: 15,
               marginy: 15,
               ranksep: 55,
-              nodesep: 35
+              nodesep: 35,
             }}
           />
         </svg>
@@ -62,4 +69,3 @@ export class Basic2 extends React.Component<{}, Basic2State> {
     );
   }
 }
-

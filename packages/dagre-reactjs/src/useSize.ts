@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useLayoutEffect, useState, RefObject } from 'react';
+import { RefObject, useLayoutEffect, useState } from 'react';
 
 import { ReportSize } from './types';
 
