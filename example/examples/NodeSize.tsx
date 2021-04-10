@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
   DagreReact,
   EdgeOptions,
@@ -10,7 +8,9 @@ import {
   ReportSize,
   Size,
   ValueCache,
-} from '../../dist/';
+} from 'dagre-reactjs';
+import * as React from 'react';
+
 import { customNodeSize } from '../data';
 
 type CustomNodesState = {
