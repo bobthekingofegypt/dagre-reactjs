@@ -94,6 +94,7 @@ export interface DAGReactGeneralProps {
   defaultEdgeConfig: RecursivePartial<EdgeOptions>;
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
+  graphLayoutStarted: () => void;
   graphLayoutComplete: (width?: number, height?: number) => void;
   stage: number;
   layoutStage: number;

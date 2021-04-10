@@ -68,6 +68,9 @@ export default class DAGReact extends React.Component<
     nodes: [],
     edges: [],
     graphOptions: {},
+    graphLayoutStarted: () => {
+      /*no-op*/
+    },
     graphLayoutComplete: () => {
       /*no-op*/
     },
@@ -144,6 +147,7 @@ export default class DAGReact extends React.Component<
   componentDidUpdate() {
     if (this.state.graphLayout.dirty) {
       console.log('Forcing a layout');
+      this.props.graphLayoutStarted();
       const returnValue = this.state.graphLayout.layout();
       const adjustForResults = () => {
         console.log('layout is done');

@@ -1,0 +1,19 @@
+.NodePositionForm .container {
+  width: 280px;
+  display: table;
+}
+
+.NodePositionForm label {
+  display: table-cell;
+  width: 1px;
+  white-space: nowrap
+}
+
+.NodePositionForm span {
+  display: table-cell;
+  padding: 0 0 0 5px;
+}
+
+.NodePositionForm input {
+    width:80px; 
+}

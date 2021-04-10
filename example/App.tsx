@@ -6,11 +6,12 @@ import { Route, Switch } from 'react-router-dom';
 import { Basic1 } from './examples/Basic1';
 import { Basic2 } from './examples/Basic2';
 import { CustomButtonNodes } from './examples/CustomButtonNodes';
+import { CustomLayouts } from './examples/CustomLayouts';
 import { CustomPathsType } from './examples/CustomPathType';
 import { CustomShapes } from './examples/CustomShapes';
 import { CustomStyles } from './examples/CustomStyles';
 import { D3Dag } from './examples/D3Dag';
-import { ElkTest } from './examples/ElkTest';
+import { ElkOrdering } from './examples/elkordering/ElkOrdering';
 import { ForeignObjects1 } from './examples/ForeignObjects1';
 import { MouseEvents } from './examples/MouseEvents';
 import { NodeSize } from './examples/NodeSize';
@@ -44,7 +45,8 @@ class App extends React.Component<{}, {}> {
             <Route path="/customStyles" component={CustomStyles} />
             <Route path="/nodeSize" component={NodeSize} />
             <Route path="/d3dag" component={D3Dag} />
-            <Route path="/elktest" component={ElkTest} />
+            <Route path="/elktest" component={CustomLayouts} />
+            <Route path="/elkOrdering" component={ElkOrdering} />
           </Switch>
         </div>
       </div>

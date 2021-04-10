@@ -7,6 +7,7 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "dagre-reactjs": ["packages/dagre-reactjs/src"],
+      "dagre-reactjs-elk-layout": ["packages/dagre-reactjs-elk-layout/src"],
       "$test/*": ["test/*"]
     }
   }

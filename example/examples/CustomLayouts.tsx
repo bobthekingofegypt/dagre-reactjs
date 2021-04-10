@@ -1,5 +1,4 @@
-import { interpolateRainbow } from 'd3-scale-chromatic';
-import { layout } from 'dagre';
+import * as d3Dag from 'd3-dag';
 import {
   DAGReact,
   EdgeOptions,
@@ -8,11 +7,11 @@ import {
   NodeOptions,
   RecursivePartial,
 } from 'dagre-reactjs';
+import { D3DagGraph } from 'dagre-reactjs-d3dag-layout';
+import { ElkLayout } from 'dagre-reactjs-elk-layout';
 import * as React from 'react';
 
 import { nodeOrdering } from '../data';
-import { D3DagGraph } from '../layouts/layout-d3dag';
-import { ElkLayout } from '../layouts/layout-elk';
 
 type Basic2State = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -48,7 +47,7 @@ const DEFAULT_NODE_CONFIG = {
 
 const DEFAULT_EDGE_CONFIG = {};
 
-export class ElkTest extends React.Component<{}, Basic2State> {
+export class CustomLayouts extends React.Component<{}, Basic2State> {
   currentLayout: GraphLayout;
   dagreLayout: GraphLayout;
   d3DagLayout: GraphLayout;
@@ -58,8 +57,32 @@ export class ElkTest extends React.Component<{}, Basic2State> {
     super(props);
 
     this.dagreLayout = new LayoutDagre();
-    this.elkLayout = new ElkLayout();
-    this.d3DagLayout = new D3DagGraph();
+    this.elkLayout = new ElkLayout({
+      algorithm: 'layered',
+      'crossingMinimization.semiInteractive': 'true',
+      'elk.direction': 'DOWN',
+      'org.eclipse.elk.layered.layering.strategy': 'INTERACTIVE',
+    });
+    this.d3DagLayout = new D3DagGraph(
+      d3Dag
+        .sugiyama()
+        .layering(
+          d3Dag.layeringSimplex().rank((node) => {
+            if (node.id === '1' || node.id === '0') {
+              return 1;
+            }
+            return undefined;
+          })
+        )
+        .decross(d3Dag.decrossTwoLayer())
+        .coord(d3Dag.coordCenter())
+        .nodeSize((node: any) => {
+          if (!node.data) {
+            return [0, 0];
+          }
+          return [node.data._node.width + 60, node.data._node.height + 60];
+        })
+    );
 
     this.currentLayout = this.elkLayout;
 
@@ -89,8 +112,8 @@ export class ElkTest extends React.Component<{}, Basic2State> {
 
     return (
       <div>
-        <h1>D3 Dag</h1>
-        <p>Graph laid out using d3-dag</p>
+        <h1>Custom layouts</h1>
+        <p>Switch between custom layout engines, dagre, d3-dag and elk</p>
         <div>
           <a href="." onClick={(e) => this.setLayout(e, 'dagre')}>
             dagre

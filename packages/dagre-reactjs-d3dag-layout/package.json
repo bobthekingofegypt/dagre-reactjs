@@ -2,8 +2,8 @@
   "version": "1.0.0-alpha.0",
   "license": "MIT",
   "main": "dist/index.js",
-  "typings": "dist/packages/dagre-reactjs/src/index.d.ts",
-  "module": "dist/dagre-reactjs.esm.js",
+  "typings": "dist/packages/dagre-reactjs-d3dag-layout/src/index.d.ts",
+  "module": "dist/dagre-reactjs-d3dag-layout.esm.js",
   "files": [
     "dist"
   ],
@@ -16,16 +16,16 @@
     "prepublish": "npm run build"
   },
   "peerDependencies": {
-    "dagre": "^0.8.5",
-    "react": ">=16"
+    "d3-dag": "^0.6.3"
   },
-  "name": "dagre-reactjs",
+  "name": "dagre-reactjs-d3dag-layout",
   "author": "Bob",
-  "description": "A pure react renderer for dagre with no dependency on d3",
+  "description": "A custom layout that uses d3dag library",
   "keywords": [
     "dagre",
     "react",
-    "d3"
+    "d3",
+    "d3dag"
   ],
   "repository": {
     "type": "git",
@@ -40,7 +40,6 @@
     "@types/lodash.defaultsdeep": "^4.6.6",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
-    "dagre": "^0.8.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",
@@ -48,10 +47,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "d3-dag": "^0.6.3"
   },
   "dependencies": {
-    "lodash-es": "^4.17.15",
-    "lodash.defaultsdeep": "^4.6.1"
+    "dagre-reactjs": "^1.0.0-alpha"
   }
 }

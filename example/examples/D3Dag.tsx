@@ -6,11 +6,11 @@ import {
   PathGeneratorTypes,
   RecursivePartial,
 } from 'dagre-reactjs';
+import { D3DagGraph } from 'dagre-reactjs-d3dag-layout';
 import * as React from 'react';
 
 import { d3DagGrafo } from '../data';
 import GradientEdge from '../edges/GradientEdge';
-import { D3DagGraph } from '../layouts/layout-d3dag';
 import { generatePathD3Curve } from '../paths/d3CatmullRomcurve';
 
 type Basic2State = {

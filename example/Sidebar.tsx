@@ -52,7 +52,10 @@ export const Sidebar: React.FC<{}> = () => {
           <Link to="/d3dag">D3-Dag</Link>
         </li>
         <li>
-          <Link to="/elktest">Elk test</Link>
+          <Link to="/elktest">Custom layouts</Link>
+        </li>
+        <li>
+          <Link to="/elkordering">Elk Ordering</Link>
         </li>
       </ul>
     </div>
