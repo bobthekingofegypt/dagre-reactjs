@@ -13,7 +13,7 @@
     "test": "tsdx test --watch",
     "coverage": "tsdx test --coverage",
     "lint": "tsdx lint",
-    "prepublish": "npm run build"
+    "prepublish": "yarn run build"
   },
   "peerDependencies": {
     "dagre": "^0.8.5",
