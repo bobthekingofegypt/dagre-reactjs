@@ -37,6 +37,9 @@ export default class DagreReact extends React.Component<
     nodes: [],
     edges: [],
     graphOptions: {},
+    graphLayoutStarted: () => {
+      return undefined;
+    },
     graphLayoutComplete: () => {
       return undefined;
     },
