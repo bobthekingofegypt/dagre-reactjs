@@ -25,7 +25,7 @@ export class ElkLayout extends Layout implements GraphLayout {
 
   constructor(config: ElkConfig) {
     super();
-    console.log('RUNNING ELK');
+    // console.log('RUNNING ELK');
     this.config = config;
     this.elk = new ELKConstructor();
   }

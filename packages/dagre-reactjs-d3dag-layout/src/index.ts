@@ -13,7 +13,7 @@ export class D3DagGraph extends Layout implements GraphLayout {
 
   constructor(layout: any) {
     super();
-    console.log('LAYOUT D3Dag');
+    // console.log('LAYOUT D3Dag');
 
     this.dag = d3Dag.dagStratify();
 

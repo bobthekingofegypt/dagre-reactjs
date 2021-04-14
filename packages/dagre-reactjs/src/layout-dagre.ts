@@ -13,7 +13,7 @@ export class LayoutDagre extends Layout implements GraphLayout {
 
   constructor() {
     super();
-    console.log('LAYOUT DAGRE');
+    // console.log('LAYOUT DAGRE');
     this.graph = new graphlib.Graph();
 
     this.graph.setGraph({});

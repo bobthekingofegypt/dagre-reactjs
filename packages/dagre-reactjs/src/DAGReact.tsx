@@ -107,7 +107,7 @@ export default class DAGReact extends React.Component<
 
   static getDerivedStateFromProps(nextProps: any, state: any) {
     if (nextProps.stage !== state.previousStage) {
-      console.log('resetting');
+      // console.log('resetting');
       const graphLayout = nextProps.graphLayout;
       graphLayout.setGraphLabelOptions(nextProps.graphOptions);
       graphLayout.setGraphData(
@@ -146,11 +146,11 @@ export default class DAGReact extends React.Component<
 
   componentDidUpdate() {
     if (this.state.graphLayout.dirty) {
-      console.log('Forcing a layout');
+      // console.log('Forcing a layout');
       this.props.graphLayoutStarted();
       const returnValue = this.state.graphLayout.layout();
       const adjustForResults = () => {
-        console.log('layout is done');
+        // console.log('layout is done');
         this.adjustIntersections();
         const size = this.state.graphLayout.graphSize();
         this.props.graphLayoutComplete(size.width, size.height);
@@ -175,7 +175,7 @@ export default class DAGReact extends React.Component<
     const edges = graph.edges;
     const nodes = graph.nodes;
 
-    console.log(edges);
+    // console.log(edges);
     return (
       <g>
         {nodes.map((node, index) => {
