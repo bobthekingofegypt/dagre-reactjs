@@ -113,6 +113,7 @@ export interface DAGReactGeneralProps {
     edgeMeta: EdgeOptions,
     reportSize: ReportSize
   ) => React.ReactElement<any>;
+  renderingOrder: Array<keyof RenderingOrderMapping>;
   graphOptions: { [key: string]: any };
 }
 
@@ -207,3 +208,9 @@ export interface EdgeOptions {
     [key: string]: any;
   };
 }
+
+export type RenderingOrderMapping = {
+  nodes: React.ReactElement<any>[];
+  edges: React.ReactElement<any>[];
+  edgeLabels: React.ReactElement<any>[];
+};
