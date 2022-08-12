@@ -114,6 +114,7 @@ export interface DAGReactGeneralProps {
     reportSize: ReportSize
   ) => React.ReactElement<any>;
   renderingOrder: Array<keyof RenderingOrderMapping>;
+  multigraph?: boolean;
   graphOptions: { [key: string]: any };
 }
 
@@ -139,6 +140,10 @@ export interface GraphLayout {
   graphNodeById(id: string): NodeOptions | undefined;
   setEdgeLabelSize(index: number, width: number, height: number): void;
   setNodeSize(index: number, width: number, height: number): void;
+}
+
+export interface LayoutDagreConstructorOptions {
+  multigraph: boolean;
 }
 
 export interface NodeOptions {
@@ -178,6 +183,7 @@ export interface NodeOptions {
 export interface EdgeOptions {
   from: string;
   to: string;
+  name?: string;
   label?: string;
   labelPos: 'l' | 'r' | 'c';
   labelOffset: number;

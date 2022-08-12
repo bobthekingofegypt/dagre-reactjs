@@ -47,13 +47,14 @@ export default class DagreReact extends React.Component<
     layoutStage: 1,
     layoutType: LayoutType.Dagre,
     renderingOrder: ['nodes', 'edges', 'edgeLabels'],
+    multigraph: false,
   };
 
   constructor(props: DagreReactProps) {
     super(props);
 
     this.state = {
-      graphLayout: new LayoutDagre(),
+      graphLayout: new LayoutDagre({ multigraph: props.multigraph }),
     };
   }
 
