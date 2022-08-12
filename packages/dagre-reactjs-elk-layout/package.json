@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/packages/dagre-reactjs-elk-layout/src/index.d.ts",
@@ -52,6 +52,6 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "dagre-reactjs": "^1.0.0-alpha.2"
+    "dagre-reactjs": "^1.0.0-alpha.3"
   }
 }
