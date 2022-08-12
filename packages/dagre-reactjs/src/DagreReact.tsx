@@ -46,6 +46,7 @@ export default class DagreReact extends React.Component<
     stage: 1,
     layoutStage: 1,
     layoutType: LayoutType.Dagre,
+    renderingOrder: ['nodes', 'edges', 'edgeLabels'],
   };
 
   constructor(props: DagreReactProps) {
