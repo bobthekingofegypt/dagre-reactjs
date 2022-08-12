@@ -18,6 +18,7 @@ import {
   NodeLabelsDefinition,
   NodeOptions,
   PathGeneratorTypes,
+  RenderingOrderMapping,
   ReportSize,
   ShapeDefinition,
   ShapesDefinition,
@@ -77,6 +78,7 @@ export default class DAGReact extends React.Component<
     stage: 1,
     layoutStage: 1,
     layoutType: LayoutType.Dagre,
+    renderingOrder: ['nodes', 'edges', 'edgeLabels'],
   };
 
   constructor(props: DAGReactProps) {
@@ -166,7 +168,12 @@ export default class DAGReact extends React.Component<
 
   render() {
     // console.log("render =====================================================");
-    const { renderNode, renderEdge, renderEdgeLabel } = this.props;
+    const {
+      renderNode,
+      renderEdge,
+      renderEdgeLabel,
+      renderingOrder,
+    } = this.props;
 
     const renderNodeFunc = renderNode || this.renderNode;
     const renderEdgeFunc = renderEdge || this.renderEdge;
@@ -176,26 +183,30 @@ export default class DAGReact extends React.Component<
     const nodes = graph.nodes;
 
     // console.log(edges);
+    const renderingOrderMapping: RenderingOrderMapping = {
+      nodes: nodes.map((node, index) => {
+        return renderNodeFunc(
+          node,
+          this.reportNodeSize.bind(this, index),
+          this.valueCache,
+          this.props.layoutStage
+        );
+      }),
+      edges: edges.map((edgeMeta, index) => {
+        return renderEdgeFunc(index, edgeMeta);
+      }),
+      edgeLabels: edges.map((edgeMeta, index) => {
+        return renderEdgeLabelFunc(
+          index,
+          edgeMeta,
+          this.reportEdgeLabelSize.bind(this, index)
+        );
+      }),
+    };
+
     return (
       <g>
-        {nodes.map((node, index) => {
-          return renderNodeFunc(
-            node,
-            this.reportNodeSize.bind(this, index),
-            this.valueCache,
-            this.props.layoutStage
-          );
-        })}
-        {edges.map((edgeMeta, index) => {
-          return renderEdgeFunc(index, edgeMeta);
-        })}
-        {edges.map((edgeMeta, index) => {
-          return renderEdgeLabelFunc(
-            index,
-            edgeMeta,
-            this.reportEdgeLabelSize.bind(this, index)
-          );
-        })}
+        {renderingOrder.map((renderItem) => renderingOrderMapping[renderItem])}
       </g>
     );
   }
