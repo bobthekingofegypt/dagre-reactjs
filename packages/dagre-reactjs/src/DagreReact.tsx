@@ -6,6 +6,7 @@ import { DAGReactGeneralProps, LayoutType } from './types';
 
 type DagreReactProps = DAGReactGeneralProps & {
   graphOptions: GraphOptions;
+  multigraph?: boolean;
 };
 
 export interface GraphOptions {

@@ -114,7 +114,6 @@ export interface DAGReactGeneralProps {
     reportSize: ReportSize
   ) => React.ReactElement<any>;
   renderingOrder: Array<keyof RenderingOrderMapping>;
-  multigraph?: boolean;
   graphOptions: { [key: string]: any };
 }
 
