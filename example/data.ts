@@ -1417,3 +1417,65 @@ export const nodeOrdering: {
     },
   ],
 };
+
+export const multigraph: {
+  nodes: Array<RecursivePartial<NodeOptions>>;
+  edges: Array<RecursivePartial<EdgeOptions>>;
+} = {
+  nodes: [
+    {
+      id: '0',
+      label: 'Project Start',
+      styles: {
+        shape: {
+          styles: { fill: '#fff', stroke: '#000' },
+        },
+        node: {
+          padding: {
+            top: 20,
+            bottom: 20,
+            left: 20,
+            right: 20,
+          },
+        },
+        label: {
+          styles: { pointerEvents: 'none' },
+        },
+      },
+    },
+    {
+      id: '2',
+      label: 'Project End',
+      styles: {
+        shape: {
+          styles: { fill: '#fff', stroke: '#000' },
+        },
+        node: {
+          padding: {
+            top: 20,
+            bottom: 20,
+            left: 20,
+            right: 20,
+          },
+        },
+        label: {
+          styles: { pointerEvents: 'none' },
+        },
+      },
+    },
+  ],
+  edges: [
+    {
+      from: '0',
+      to: '2',
+      name: 'one',
+      label: 'one',
+    },
+    {
+      from: '0',
+      to: '2',
+      name: 'two',
+      label: 'other one',
+    },
+  ],
+};

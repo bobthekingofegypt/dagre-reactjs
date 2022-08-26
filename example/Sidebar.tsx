@@ -57,6 +57,9 @@ export const Sidebar: React.FC<{}> = () => {
         <li>
           <Link to="/elkordering">Elk Ordering</Link>
         </li>
+        <li>
+          <Link to="/dagremultigraph">Dagre multigraph</Link>
+        </li>
       </ul>
     </div>
   );

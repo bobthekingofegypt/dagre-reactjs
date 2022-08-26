@@ -11,6 +11,7 @@ import { CustomPathsType } from './examples/CustomPathType';
 import { CustomShapes } from './examples/CustomShapes';
 import { CustomStyles } from './examples/CustomStyles';
 import { D3Dag } from './examples/D3Dag';
+import { DagreMultigraph } from './examples/DagreMultigraph';
 import { ElkOrdering } from './examples/elkordering/ElkOrdering';
 import { ForeignObjects1 } from './examples/ForeignObjects1';
 import { MouseEvents } from './examples/MouseEvents';
@@ -47,6 +48,7 @@ class App extends React.Component<{}, {}> {
             <Route path="/d3dag" component={D3Dag} />
             <Route path="/elktest" component={CustomLayouts} />
             <Route path="/elkOrdering" component={ElkOrdering} />
+            <Route path="/dagremultigraph" component={DagreMultigraph} />
           </Switch>
         </div>
       </div>
