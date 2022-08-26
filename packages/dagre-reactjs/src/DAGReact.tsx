@@ -246,9 +246,12 @@ export default class DAGReact extends React.Component<
       this.state.markerComponents
     );
 
+    let key = `{edgeMeta.from}-${edgeMeta.to}`;
+    if (edgeMeta.name) key += `-${edgeMeta.name}`;
+
     return (
       <Edge
-        key={`${edgeMeta.from}-${edgeMeta.to}`}
+        key={key}
         index={index}
         edgeMeta={edgeMeta}
         markerComponent={markerComponent}

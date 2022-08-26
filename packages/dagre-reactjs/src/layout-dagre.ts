@@ -4,6 +4,7 @@ import { Graph as Layout } from './graph';
 import {
   EdgeOptions,
   GraphLayout,
+  LayoutDagreConstructorOptions,
   NodeOptions,
   RecursivePartial,
 } from './types';
@@ -11,10 +12,10 @@ import {
 export class LayoutDagre extends Layout implements GraphLayout {
   graph: graphlib.Graph;
 
-  constructor() {
+  constructor({ multigraph }: LayoutDagreConstructorOptions) {
     super();
     // console.log('LAYOUT DAGRE');
-    this.graph = new graphlib.Graph();
+    this.graph = new graphlib.Graph({ multigraph });
 
     this.graph.setGraph({});
     this.graph.setDefaultEdgeLabel(function () {
@@ -43,13 +44,17 @@ export class LayoutDagre extends Layout implements GraphLayout {
     );
 
     this.graph.nodes().forEach((n) => this.graph.removeNode(n));
-    this.graph.edges().forEach((e) => this.graph.removeEdge(e.v, e.w));
+    this.graph.edges().forEach((e) => {
+      // Typescript compiler complains that removeEdge only expects 2 args
+      // @ts-ignore
+      this.graph.removeEdge(e.v, e.w, e.name);
+    });
 
     this.nodes.forEach((node) => {
       this.graph.setNode(node.id, node);
     });
     this.edges.forEach((edge) => {
-      this.graph.setEdge(edge.from, edge.to, edge);
+      this.graph.setEdge(edge.from, edge.to, edge, edge.name);
     });
   }
 

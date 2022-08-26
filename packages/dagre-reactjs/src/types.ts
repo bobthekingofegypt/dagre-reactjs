@@ -141,6 +141,10 @@ export interface GraphLayout {
   setNodeSize(index: number, width: number, height: number): void;
 }
 
+export interface LayoutDagreConstructorOptions {
+  multigraph: boolean;
+}
+
 export interface NodeOptions {
   id: string;
   label: string;
@@ -178,6 +182,7 @@ export interface NodeOptions {
 export interface EdgeOptions {
   from: string;
   to: string;
+  name?: string;
   label?: string;
   labelPos: 'l' | 'r' | 'c';
   labelOffset: number;
