@@ -2194,7 +2194,7 @@ d3-array@^2.11.0:
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-2.0.0.tgz#8d625cab42ed9b8f601a1760a389f7ea9189d62e"
   integrity sha512-SPXi0TSKPD4g9tw0NMZFnR95XVgUZiBH+uUTqQuDu1OsE2zomHU7ho0FISciaPvosimixwHFl3WHLGabv6dDgQ==
 
-d3-dag@^0.6.3:
+d3-dag@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.6.3.tgz#8fc297d6ff0b35fd8c5f250ff8b09c8371b16dee"
   integrity sha512-IcCb3JNnr0SUR1DAWoSTJxdDu6HjPfsirbP79/0He7WlSYCUkTcF/+tKsc8Sb2ItJQhTi+q9XNzGzWmlLaXBSg==

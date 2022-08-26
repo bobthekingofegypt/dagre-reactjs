@@ -16,7 +16,7 @@
     "prepublish": "yarn run build"
   },
   "peerDependencies": {
-    "d3-dag": "^0.6.3"
+    "d3-dag": "0.6.3"
   },
   "name": "dagre-reactjs-d3dag-layout",
   "author": "Bob",
@@ -40,7 +40,7 @@
     "@types/lodash.defaultsdeep": "^4.6.6",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
-    "d3-dag": "^0.6.3",
+    "d3-dag": "0.6.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",

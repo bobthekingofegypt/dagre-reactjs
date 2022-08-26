@@ -3839,7 +3839,7 @@ d3-array@^2.11.0:
   dependencies:
     internmap "^1.0.0"
 
-d3-dag@^0.6.3:
+d3-dag@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.6.3.tgz#8fc297d6ff0b35fd8c5f250ff8b09c8371b16dee"
   integrity sha512-IcCb3JNnr0SUR1DAWoSTJxdDu6HjPfsirbP79/0He7WlSYCUkTcF/+tKsc8Sb2ItJQhTi+q9XNzGzWmlLaXBSg==
