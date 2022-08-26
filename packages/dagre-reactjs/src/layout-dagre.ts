@@ -45,8 +45,6 @@ export class LayoutDagre extends Layout implements GraphLayout {
 
     this.graph.nodes().forEach((n) => this.graph.removeNode(n));
     this.graph.edges().forEach((e) => {
-      // Typescript compiler complains that removeEdge only expects 2 args
-      // @ts-ignore
       this.graph.removeEdge(e.v, e.w, e.name);
     });
 
