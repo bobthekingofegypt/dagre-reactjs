@@ -1,6 +1,12 @@
-import * as React from "react";
-import {DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
-import { animateStory, steps } from "../animatedStory";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { animateStory, steps } from '../animatedStory';
 
 type TimelineState = {
   data: {
@@ -17,16 +23,16 @@ const DEFAULT_NODE_CONFIG: RecursivePartial<NodeOptions> = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
     label: {
       styles: {
-        fontWeight: "bold"
-      }
-    }
-  }
+        fontWeight: 'bold',
+      },
+    },
+  },
 };
 
 export class Timeline extends React.Component<{}, TimelineState> {
@@ -48,7 +54,7 @@ export class Timeline extends React.Component<{}, TimelineState> {
     this.interval = animateStory(
       steps,
       2000,
-      (data: any) => this.setState({ data, stage: this.state.stage + 1}),
+      (data: any) => this.setState({ data, stage: this.state.stage + 1 }),
       () => this.state.data
     );
   }
@@ -63,7 +69,10 @@ export class Timeline extends React.Component<{}, TimelineState> {
     return (
       <div>
         <h1>Timeline</h1>
-        <p>Example that shows updating the graph overtime and forcing relayouts creating a sort of animation effect</p>
+        <p>
+          Example that shows updating the graph overtime and forcing relayouts
+          creating a sort of animation effect
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -74,7 +83,7 @@ export class Timeline extends React.Component<{}, TimelineState> {
               marginy: 15,
               ranksep: 15,
               nodesep: 15,
-              rankdir: "LR"
+              rankdir: 'LR',
             }}
             stage={this.state.stage}
           />

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Circle renders correctly 1`] = `
+<circle
+  r={25}
+  style={
+    Object {
+      "fillOpacity": 0,
+      "stroke": "#000",
+    }
+  }
+  x={-25}
+  y={-25}
+/>
+`;

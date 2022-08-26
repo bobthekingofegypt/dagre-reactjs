@@ -1,7 +1,19 @@
-import * as React from "react";
-import { basic1 } from "../data";
-import { Node, ValueCache, Rect, NodeTextLabel, DagreReact, NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../.";
-import ReactTooltip from "react-tooltip";
+import {
+  DagreReact,
+  EdgeOptions,
+  Node,
+  NodeOptions,
+  NodeTextLabel,
+  Rect,
+  RecursivePartial,
+  ReportSize,
+  Size,
+  ValueCache,
+} from 'dagre-reactjs';
+import * as React from 'react';
+import ReactTooltip from 'react-tooltip';
+
+import { basic1 } from '../data';
 
 type MouseEventsState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -18,7 +30,7 @@ export class Tooltips extends React.Component<{}, MouseEventsState> {
       nodes: basic1.nodes,
       edges: basic1.edges,
       highlightedNode: undefined,
-      stage: 1
+      stage: 1,
     };
   }
 
@@ -43,7 +55,7 @@ export class Tooltips extends React.Component<{}, MouseEventsState> {
               </g>
             );
           },
-          label: () => <NodeTextLabel node={node} />
+          label: () => <NodeTextLabel node={node} />,
         }}
       </Node>
     );
@@ -56,7 +68,8 @@ export class Tooltips extends React.Component<{}, MouseEventsState> {
       <div>
         <h1>Tooltips</h1>
         <p>
-          Example that shows how a third party tooltip library could be integrated for use
+          Example that shows how a third party tooltip library could be
+          integrated for use
         </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
@@ -67,9 +80,9 @@ export class Tooltips extends React.Component<{}, MouseEventsState> {
             graphOptions={{
               marginx: 15,
               marginy: 15,
-              rankdir: "LR",
+              rankdir: 'LR',
               ranksep: 55,
-              nodesep: 15
+              nodesep: 15,
             }}
           />
         </svg>

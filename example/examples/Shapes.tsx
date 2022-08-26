@@ -1,6 +1,12 @@
-import * as React from "react";
-import { shapes } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { shapes } from '../data';
 
 type ShapesState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -14,12 +20,12 @@ const DEFAULT_NODE_CONFIG = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
-    label: {}
-  }
+    label: {},
+  },
 };
 
 export class Shapes extends React.Component<{}, ShapesState> {
@@ -38,7 +44,10 @@ export class Shapes extends React.Component<{}, ShapesState> {
     return (
       <div>
         <h1>Shapes</h1>
-        <p>Example showing the use of built in shapes circle, diamond and rectangle</p>
+        <p>
+          Example showing the use of built in shapes circle, diamond and
+          rectangle
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -48,7 +57,7 @@ export class Shapes extends React.Component<{}, ShapesState> {
               marginx: 15,
               marginy: 15,
               ranksep: 55,
-              nodesep: 35
+              nodesep: 35,
             }}
           />
         </svg>

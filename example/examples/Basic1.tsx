@@ -1,10 +1,18 @@
-import * as React from "react";
-import { basic1 } from "../data";
-import { DagreReact, RecursivePartial, NodeOptions, EdgeOptions } from "../../.";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { basic1 } from '../data';
 
 type Basic1State = {
   nodes: Array<RecursivePartial<NodeOptions>>;
   edges: Array<RecursivePartial<EdgeOptions>>;
+  width: number;
+  height: number;
 };
 
 export class Basic1 extends React.Component<{}, Basic1State> {
@@ -13,7 +21,9 @@ export class Basic1 extends React.Component<{}, Basic1State> {
 
     this.state = {
       nodes: basic1.nodes,
-      edges: basic1.edges
+      edges: basic1.edges,
+      width: 0,
+      height: 0,
     };
   }
 
@@ -23,18 +33,26 @@ export class Basic1 extends React.Component<{}, Basic1State> {
     return (
       <div>
         <h1>Basic 1</h1>
-        <p>Simple demonstration of some nodes connected together with some edges</p>
-        <svg id="schedule" width={1150} height={1000}>
+        <p>
+          Simple demonstration of some nodes connected together with some edges
+        </p>
+        <svg id="schedule" width={this.state.width} height={this.state.height}>
           <DagreReact
             nodes={nodes}
             edges={edges}
             graphOptions={{
               marginx: 15,
               marginy: 15,
-              rankdir: "LR",
+              rankdir: 'LR',
               ranksep: 55,
-              nodesep: 15
+              nodesep: 15,
             }}
+            graphLayoutComplete={(width, height) =>
+              this.setState({
+                width: width as number,
+                height: height as number,
+              })
+            }
           />
         </svg>
       </div>

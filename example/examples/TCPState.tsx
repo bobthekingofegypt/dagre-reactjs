@@ -1,6 +1,12 @@
-import * as React from "react";
-import { tcpStateData } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial } from "../../.";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { tcpStateData } from '../data';
 
 type TCPStateState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -14,24 +20,24 @@ const DEFAULT_NODE_CONFIG: RecursivePartial<NodeOptions> = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
     label: {
       styles: {
-        fontWeight: "bold"
-      }
-    }
-  }
+        fontWeight: 'bold',
+      },
+    },
+  },
 };
 
 const DEFAULT_EDGE_CONFIG: RecursivePartial<EdgeOptions> = {
   styles: {
     label: {
-      styles: { fill: "#868686" }
-    }
-  }
+      styles: { fill: '#868686' },
+    },
+  },
 };
 
 export class TCPState extends React.Component<{}, TCPStateState> {
@@ -40,7 +46,7 @@ export class TCPState extends React.Component<{}, TCPStateState> {
 
     this.state = {
       nodes: tcpStateData.nodes,
-      edges: tcpStateData.edges
+      edges: tcpStateData.edges,
     };
   }
 
@@ -50,7 +56,10 @@ export class TCPState extends React.Component<{}, TCPStateState> {
     return (
       <div>
         <h1>TCPState</h1>
-        <p>Example that sort of mimics the dagre-d3 example showing tcp state, not supposed to be the exact same</p>
+        <p>
+          Example that sort of mimics the dagre-d3 example showing tcp state,
+          not supposed to be the exact same
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -61,7 +70,7 @@ export class TCPState extends React.Component<{}, TCPStateState> {
               marginx: 15,
               marginy: 15,
               ranksep: 55,
-              nodesep: 35
+              nodesep: 35,
             }}
           />
         </svg>

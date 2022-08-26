@@ -1,9 +1,18 @@
-import * as React from "react";
-import { customShapes } from "../data";
-import { DagreReact, ValueCache, NodeOptions, EdgeOptions, Point, RecursivePartial, ShapesDefinition } from "../../.";
-import { House, calculateHousePoints } from "../shapes/House";
-import { intersectPolygon2, intersectPath } from "../shapes/intersects/custom";
-import {Cloud, calculateCloudPath} from "../shapes/Cloud";
+import {
+  DagreReact,
+  EdgeOptions,
+  NodeOptions,
+  Point,
+  RecursivePartial,
+  ShapesDefinition,
+  ValueCache,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { customShapes } from '../data';
+import { calculateCloudPath, Cloud } from '../shapes/Cloud';
+import { calculateHousePoints, House } from '../shapes/House';
+import { intersectPath, intersectPolygon2 } from '../shapes/intersects/custom';
 
 type CustomShapesState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -18,12 +27,12 @@ const DEFAULT_NODE_CONFIG = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
-    label: {}
-  }
+    label: {},
+  },
 };
 
 export class CustomShapes extends React.Component<{}, CustomShapesState> {
@@ -36,21 +45,29 @@ export class CustomShapes extends React.Component<{}, CustomShapesState> {
       customShapes: {
         cloud: {
           renderer: Cloud,
-          intersection: (node: NodeOptions, point: Point, valueCache: ValueCache) => {
+          intersection: (
+            node: NodeOptions,
+            point: Point,
+            valueCache: ValueCache
+          ) => {
             const labelSize = valueCache.value(`${node.id}-label-size`);
             const path = calculateCloudPath(labelSize);
             return intersectPath(node, point, path);
-          }
+          },
         },
         house: {
           renderer: House,
-          intersection: (node: NodeOptions, point: Point, valueCache: ValueCache) => {
+          intersection: (
+            node: NodeOptions,
+            point: Point,
+            valueCache: ValueCache
+          ) => {
             const labelSize = valueCache.value(`${node.id}-label-size`);
             const polyPoints = calculateHousePoints(labelSize);
             return intersectPolygon2(node, point, polyPoints);
-          }
-        }
-      }
+          },
+        },
+      },
     };
   }
 
@@ -60,7 +77,10 @@ export class CustomShapes extends React.Component<{}, CustomShapesState> {
     return (
       <div>
         <h1>Custom shapes</h1>
-        <p>Example that shows how to declare and use custom shapes well still using the built in node component for sizing.</p>
+        <p>
+          Example that shows how to declare and use custom shapes well still
+          using the built in node component for sizing.
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -71,7 +91,7 @@ export class CustomShapes extends React.Component<{}, CustomShapesState> {
               marginx: 15,
               marginy: 15,
               ranksep: 55,
-              nodesep: 35
+              nodesep: 35,
             }}
           />
         </svg>

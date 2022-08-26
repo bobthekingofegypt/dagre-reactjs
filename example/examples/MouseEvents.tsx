@@ -1,7 +1,18 @@
-import * as React from "react";
-import { basic1 } from "../data";
-import {} from "../../src";
-import { Node, ValueCache, Rect, NodeTextLabel, DagreReact, NodeOptions, EdgeOptions, RecursivePartial, ReportSize, Size } from "../../.";
+import {
+  DagreReact,
+  EdgeOptions,
+  Node,
+  NodeOptions,
+  NodeTextLabel,
+  Rect,
+  RecursivePartial,
+  ReportSize,
+  Size,
+  ValueCache,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { basic1 } from '../data';
 
 type MouseEventsState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -18,7 +29,7 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
       nodes: basic1.nodes,
       edges: basic1.edges,
       highlightedNode: undefined,
-      stage: 1
+      stage: 1,
     };
   }
 
@@ -40,11 +51,11 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
             if (node.id === this.state.highlightedNode) {
               node.styles.shape.styles = {
                 ...node.styles.shape.styles,
-                fill: "#00008a"
+                fill: '#00008a',
               };
               node.styles.label.styles = {
                 ...node.styles.label.styles,
-                fill: "#fff"
+                fill: '#fff',
               };
             }
             return (
@@ -52,13 +63,13 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
                 onMouseEnter={() =>
                   this.setState({
                     stage: this.state.stage + 1,
-                    highlightedNode: node.id
+                    highlightedNode: node.id,
                   })
                 }
                 onMouseLeave={() =>
                   this.setState({
                     stage: this.state.stage + 1,
-                    highlightedNode: undefined
+                    highlightedNode: undefined,
                   })
                 }
               >
@@ -66,7 +77,7 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
               </g>
             );
           },
-          label: () => <NodeTextLabel node={node} />
+          label: () => <NodeTextLabel node={node} />,
         }}
       </Node>
     );
@@ -78,7 +89,13 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
     return (
       <div>
         <h1>Timeline</h1>
-        <p>Example that shows updating styles on mouse over, currently unsure of the best way to perform these operations, this is one possible route I was looking at.  Warning changing the raw data without issuing a stage change will not trigger a change in the graph as the dagrereact component has its own copy of the data from the initial props.</p>
+        <p>
+          Example that shows updating styles on mouse over, currently unsure of
+          the best way to perform these operations, this is one possible route I
+          was looking at. Warning changing the raw data without issuing a stage
+          change will not trigger a change in the graph as the dagrereact
+          component has its own copy of the data from the initial props.
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -88,9 +105,9 @@ export class MouseEvents extends React.Component<{}, MouseEventsState> {
             graphOptions={{
               marginx: 15,
               marginy: 15,
-              rankdir: "LR",
+              rankdir: 'LR',
               ranksep: 55,
-              nodesep: 15
+              nodesep: 15,
             }}
           />
         </svg>

@@ -1,8 +1,16 @@
-import * as React from "react";
-import { foreignObjects } from "../data";
-import { DagreReact, NodeOptions, EdgeOptions, RecursivePartial, NodeLabelsDefinition, EdgeLabelsDefinition } from "../../.";
-import {Foreign} from "../nodelabels/Foreign";
-import {ForeignLabel} from "../edgelabels/ForeignLabel";
+import {
+  DagreReact,
+  EdgeLabelsDefinition,
+  EdgeOptions,
+  NodeLabelsDefinition,
+  NodeOptions,
+  RecursivePartial,
+} from 'dagre-reactjs';
+import * as React from 'react';
+
+import { foreignObjects } from '../data';
+import { ForeignLabel } from '../edgelabels/ForeignLabel';
+import { Foreign } from '../nodelabels/Foreign';
 
 type ForeignObjectsState = {
   nodes: Array<RecursivePartial<NodeOptions>>;
@@ -18,12 +26,12 @@ const DEFAULT_NODE_CONFIG = {
         top: 10,
         bottom: 10,
         left: 10,
-        right: 10
-      }
+        right: 10,
+      },
     },
     shape: {},
-    label: {}
-  }
+    label: {},
+  },
 };
 
 export class ForeignObjects1 extends React.Component<{}, ForeignObjectsState> {
@@ -34,17 +42,17 @@ export class ForeignObjects1 extends React.Component<{}, ForeignObjectsState> {
       nodes: foreignObjects.nodes,
       edges: foreignObjects.edges,
       customNodeLabels: {
-        "foreign": {
+        foreign: {
           renderer: Foreign,
-          html: true
-        }
+          html: true,
+        },
       },
       customEdgeLabels: {
-        "foreign": {
+        foreign: {
           renderer: ForeignLabel,
-          html: true
-        }
-      }
+          html: true,
+        },
+      },
     };
   }
 
@@ -54,7 +62,11 @@ export class ForeignObjects1 extends React.Component<{}, ForeignObjectsState> {
     return (
       <div>
         <h1>Foreign objects</h1>
-        <p>Example that shows the use of html components for node and edge that are inserted in as foreign objects, remember to check target browsers support foreignobjects.</p>
+        <p>
+          Example that shows the use of html components for node and edge that
+          are inserted in as foreign objects, remember to check target browsers
+          support foreignobjects.
+        </p>
         <svg id="schedule" width={1150} height={1000}>
           <DagreReact
             nodes={nodes}
@@ -66,7 +78,7 @@ export class ForeignObjects1 extends React.Component<{}, ForeignObjectsState> {
               marginx: 15,
               marginy: 15,
               ranksep: 55,
-              nodesep: 35
+              nodesep: 35,
             }}
           />
         </svg>

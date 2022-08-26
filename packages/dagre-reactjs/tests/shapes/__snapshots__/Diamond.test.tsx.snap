@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Diamond renders correctly 1`] = `
+<polygon
+  points="0, -35.35533905932738 -35.35533905932738, 0 0, 35.35533905932738 35.35533905932738, 0"
+  style={
+    Object {
+      "fillOpacity": 0,
+      "stroke": "#000",
+    }
+  }
+/>
+`;

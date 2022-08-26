@@ -1,8 +1,8 @@
-declare module "kld-intersections" {
+declare module 'kld-intersections' {
   interface ShapeInfo {
-    polygon(any);
-    path(any);
-    line(arg1: any, arg2: any);
+    polygon(a: any): any;
+    path(a: any): any;
+    line(arg1: any, arg2: any): any;
   }
 
   class Shape {}
@@ -22,11 +22,11 @@ declare module "kld-intersections" {
   }
 
   class Circle extends Shape {
-    constructor(center: Point2D, radius: Number);
+    constructor(center: Point2D, radius: number);
   }
 
   class Ellipse extends Shape {
-    constructor(center: Point2D, radiusX: Number, radiusY: Number);
+    constructor(center: Point2D, radiusX: number, radiusY: number);
   }
 
   class Line extends Shape {
@@ -52,8 +52,8 @@ declare module "kld-intersections" {
   interface Shapes {
     bezier2: { (c1: Point2D, c2: Point2D, c3: Point2D): Bezier2 };
     bezier3: { (c1: Point2D, c2: Point2D, c3: Point2D, c4: Point2D): Bezier3 };
-    circle: { (center: Point2D, radius: Number): Circle };
-    ellipse: { (center: Point2D, radiusX: Number, radiusY: Number): Ellipse };
+    circle: { (center: Point2D, radius: number): Circle };
+    ellipse: { (center: Point2D, radiusX: number, radiusY: number): Ellipse };
     line: { (p1: Point2D, p2: Point2D): Line };
     path: { (points: Shape[]): Path };
     polygon: { (points: Array<Point2D>): Polygon };
@@ -64,7 +64,7 @@ declare module "kld-intersections" {
   export const Shapes: Shapes;
 
   interface intersections {
-    readonly status: "Intersection" | "No Intersection";
+    readonly status: 'Intersection' | 'No Intersection';
     points: Point2D[];
   }
 
@@ -77,7 +77,7 @@ declare module "kld-intersections" {
   export const ShapeInfo: ShapeInfo;
 }
 
-declare module "kld-path-parser" {
+declare module 'kld-path-parser' {
   export class PathParser {
     setHandler: { (handler: handler): void };
     parseData: { (x: string): void };
