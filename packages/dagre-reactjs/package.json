@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.5",
-    "@types/dagre": "^0.7.42",
+    "@types/dagre": "^0.7.48",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^24.0.25",
